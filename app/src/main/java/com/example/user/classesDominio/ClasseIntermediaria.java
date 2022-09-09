@@ -20,10 +20,10 @@ public class ClasseIntermediaria {
         this.context = context;
     }
 
-    public ArrayList<Pergunta> carregaQuantPerguntasPorConteudo (ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo) {
+    public ArrayList<Pergunta> carregaQuantPerguntasPorConteudo(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo) {
         ArrayList<Pergunta> listaPerguntas;
 
-        for (int x = 0; x < listaNivelConteudos.size(); x++){
+        for (int x = 0; x < listaNivelConteudos.size(); x++) {
             NivelConteudo meuNivelConteudo = listaNivelConteudos.get(x);
 
             int quantidadeFaceis = 0;
@@ -66,11 +66,13 @@ public class ClasseIntermediaria {
         }
     }*/
 
-    public DesempenhoQuestionario calculaDesempenhoQuestionario (ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks){
+    public DesempenhoQuestionario calculaDesempenhoQuestionario(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks) {
         int acertos = 0;
         int erros = 0;
+        int tentativas = 0;
 
         ArrayList<NivelConteudo> listaNivelConteudoParaAtualizar = new ArrayList<>();
+        ArrayList<NivelConteudo> listaNivelConteudoParaDecair = new ArrayList<>();
 
         // criando o objeto desempenho questionario para adicionar os desempenhos por conteudo
         // testar se o metodo "System...." volta uma data ou data com hora
@@ -90,25 +92,33 @@ public class ClasseIntermediaria {
             float valorFaceis = 0;
             float valorMedias = 0;
             float valorDificeis = 0;
+            //TESTE PRA NÂO DIVIDIR POR ZERO - PEDRO
+            if (quantidadePerguntasPorConteudo[indice][1] == 0){
+                quantidadePerguntasPorConteudo[indice][1] = 1;
+            } else if ( quantidadePerguntasPorConteudo[indice][2] == 0){
+                quantidadePerguntasPorConteudo[indice][2] = 1;
+            } else if (quantidadePerguntasPorConteudo[indice][3] == 0){
+                quantidadePerguntasPorConteudo[indice][3] = 1;
+            }
             /*float percentualAuxiliar;*/
             if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
-                valorFaceis = 68/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 32/quantidadePerguntasPorConteudo[indice][2];
+                valorFaceis = 68 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 32 / quantidadePerguntasPorConteudo[indice][2];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.BRONZE) {
-                valorFaceis = 45/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 35/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 20/quantidadePerguntasPorConteudo[indice][3];
+                valorFaceis = 45 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 35 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 20 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.PRATA) {
-                valorFaceis = 30/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 40/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 30/quantidadePerguntasPorConteudo[indice][3];
+                valorFaceis = 30 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 40 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 30 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.OURO) {
-                valorFaceis = 20/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 35/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 45/quantidadePerguntasPorConteudo[indice][3];
+                valorFaceis = 20 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 35 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 45 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.DIAMANTE) {
-                valorMedias = 32/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 68/quantidadePerguntasPorConteudo[indice][3];
+                valorMedias = 32 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 68 / quantidadePerguntasPorConteudo[indice][3];
             }
             Log.d("Teste", "Percentual valor fáceis: " + valorFaceis + ", percentual médias: " + valorMedias + ", percentual díficeis: " + valorDificeis);
 
@@ -122,7 +132,7 @@ public class ClasseIntermediaria {
                 Pergunta minhaPergunta = listaPerguntas.get(x);
 
                 // verificando se acertou ou não
-                if(minhaPergunta.getOpcaoEscolhida() == minhaPergunta.getAlternativaCorreta()) {
+                if (minhaPergunta.getOpcaoEscolhida() == minhaPergunta.getAlternativaCorreta()) {
                     // acertou
                     acertos++;
                     // verificando a dificuldade para saber o valor a ser acrescido (pesos diferentes)
@@ -191,12 +201,12 @@ public class ClasseIntermediaria {
             // verificando se pontuação conteúdo fez com que devesse pular de nível
             Log.d("Teste", "Nível antigo: " + meuNivelConteudo.getNivel());
             //montar o feedback (parecido com o caso de desempenho entre 40 e 70 do diagnostico)
-            if (pontuacaoConteudo >= 65) {
+            if (pontuacaoConteudo >= 65 && meuNivelConteudo.getTentativas() < 4) { //PEDRO NUMERO DE TENTATIVAS
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel());
                 NivelConteudoEnum novoNivel = meuNivelConteudo.obtemIncrementoUmNivel();
                 meuFeedback.setNivelAtual(novoNivel);
                 int retorno = 0;
-                if (novoNivel != null){ //sinal de que pulou um nível
+                if (novoNivel != null) { //sinal de que pulou um nível
                     retorno = 1;
                 }
                 meuFeedback.setNiveisAvancados(retorno);
@@ -210,7 +220,45 @@ public class ClasseIntermediaria {
                 } else if (retorno == 0) {
                     Toast.makeText(context, "Parabéns!!! Você ja completou todos os níveis para o conteúdo: " + meuNivelConteudo.getConteudo().getNomeConteudo() + ". Agora você pode continuar praticando! \n A sua nota foi " + pontuacaoConteudo + ". Será que você consegue se superar?", Toast.LENGTH_SHORT).show();
                 }
-            } else { // precisa indicar no FeedBack que não teve avanço
+                meuNivelConteudo.setTentativas(0);
+
+            } else if (pontuacaoConteudo >= 65) { //PEDRO - Número de tentativas decrementado
+                meuNivelConteudo.setTentativas(meuNivelConteudo.getTentativas() - 1);
+                Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
+                listaFeedbacks.add(meuFeedback);
+                atualizaTentativas(meuNivelConteudo, meuUsuario);
+            } else if (pontuacaoConteudo <=10){ //Pedro - AVISO DE TENTATIVAS
+                meuNivelConteudo.setTentativas(meuNivelConteudo.getTentativas()+1);
+                System.out.println("Tentativas: "+meuNivelConteudo.getTentativas());
+                System.out.println(meuNivelConteudo.getTentativas());
+                Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
+                listaFeedbacks.add(meuFeedback);
+                Toast.makeText(context, "Sua nota foi abaixo ou igual a 10, caso isso se repita mais "+ (4 - meuNivelConteudo.getTentativas())+" você descerá de nível", Toast.LENGTH_SHORT).show();
+                atualizaTentativas(meuNivelConteudo, meuUsuario);
+
+            } else if (pontuacaoConteudo <=10 && meuNivelConteudo.getTentativas() >= 4){ //PEDRO - DECAI NIVEL
+                meuNivelConteudo.setTentativas(0);
+
+                Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel());
+                NivelConteudoEnum novoNivel = meuNivelConteudo.obtemDecaiUmNivel();
+                meuFeedback.setNivelAtual(novoNivel);
+                int retorno = 0;
+                if (novoNivel != null){ //PEDRO - Sinal de que decaiu um nivel
+                    retorno = -1;
+                }
+                meuFeedback.setNiveisAvancados(retorno);
+                listaFeedbacks.add(meuFeedback);
+                retorno = meuNivelConteudo.decaiUmNivel();
+                if (retorno == -1){
+                    Toast.makeText(context, "Erro ao atualizar o nível!", Toast.LENGTH_SHORT).show();
+                } else if ( retorno == 1){
+                    listaNivelConteudoParaDecair.add(meuNivelConteudo);
+                    Toast.makeText(context, "Que pena, infelizmente você decaiu do nível: " + meuNivelConteudo.getConteudo().getNomeConteudo() + " para o nível: " + meuNivelConteudo.getNivel(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Parece que você está com dificuldades,gostaria de ler o material de apoio?", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else { // precisa indicar no FeedBack que não teve avanço
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                 listaFeedbacks.add(meuFeedback);
 
@@ -219,19 +267,30 @@ public class ClasseIntermediaria {
             Log.d("Teste", "Nível novo: " + meuNivelConteudo.getNivel());
 
         }
+
         // verificando se existem conteúdos a serem atualizados os níveis no banco
         if (listaNivelConteudoParaAtualizar.size() > 0) {
             NivelConteudoDB nivelConteudoDB = new NivelConteudoDB(this.context);
             nivelConteudoDB.incrementaNivel(listaNivelConteudoParaAtualizar, meuUsuario);
         }
+        if (listaNivelConteudoParaDecair.size() > 0){
+            NivelConteudoDB nivelConteudoDB = new NivelConteudoDB(this.context);
+            nivelConteudoDB.decaiNivel(listaNivelConteudoParaDecair, meuUsuario);
+        }
+
 
         return desempenhoQuestionario;
     }
 
-    public ArrayList<Pergunta> carregaQuantPerguntasPorConteudoDiagnostico (ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo) {
+    public void atualizaTentativas (NivelConteudo meuNivelConteudo, Usuario meuUsuario){
+        NivelConteudoDB nivelConteudoDB = new NivelConteudoDB(this.context);
+        nivelConteudoDB.atualizaTentativas(meuNivelConteudo, meuUsuario);
+    }
+
+    public ArrayList<Pergunta> carregaQuantPerguntasPorConteudoDiagnostico(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo) {
         ArrayList<Pergunta> listaPerguntas;
 
-        for (int x = 0; x < listaNivelConteudos.size(); x++){
+        for (int x = 0; x < listaNivelConteudos.size(); x++) {
             NivelConteudo meuNivelConteudo = listaNivelConteudos.get(x);
 
             int quantidadeFaceis = 0;
@@ -269,7 +328,7 @@ public class ClasseIntermediaria {
         return listaPerguntas;
     }
 
-    public DesempenhoQuestionario calculaDesempenhoDiagnostico (ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks){
+    public DesempenhoQuestionario calculaDesempenhoDiagnostico(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks) {
         int acertos = 0;
         int erros = 0;
 
@@ -294,22 +353,22 @@ public class ClasseIntermediaria {
 
             if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
                 // nesse caso aplica-se a pontuação conforme o nível Prata
-                valorFaceis = 30/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 40/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 30/quantidadePerguntasPorConteudo[indice][3];
+                valorFaceis = 30 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 40 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 30 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.BRONZE) {
-                valorFaceis = 20/quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 35/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 45/quantidadePerguntasPorConteudo[indice][3];
+                valorFaceis = 20 / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 35 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 45 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.PRATA) {
-                valorMedias = 32/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 68/quantidadePerguntasPorConteudo[indice][3];
+                valorMedias = 32 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 68 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.OURO) {
-                valorMedias = 32/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 68/quantidadePerguntasPorConteudo[indice][3];
+                valorMedias = 32 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 68 / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.DIAMANTE) {
-                valorMedias = 32/quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 68/quantidadePerguntasPorConteudo[indice][3];
+                valorMedias = 32 / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 68 / quantidadePerguntasPorConteudo[indice][3];
             }
             Log.d("Teste", "Percentual valor fáceis: " + valorFaceis + ", percentual médias: " + valorMedias + ", percentual díficeis: " + valorDificeis);
 
@@ -323,7 +382,7 @@ public class ClasseIntermediaria {
                 Pergunta minhaPergunta = listaPerguntas.get(x);
 
                 // verificando se acertou ou não
-                if(minhaPergunta.getOpcaoEscolhida() == minhaPergunta.getAlternativaCorreta()) {
+                if (minhaPergunta.getOpcaoEscolhida() == minhaPergunta.getAlternativaCorreta()) {
                     // acertou
                     acertos++;
                     // verificando a dificuldade para saber o valor a ser acrescido (pesos diferentes)
@@ -375,7 +434,7 @@ public class ClasseIntermediaria {
                 NivelConteudoEnum novoNivel = meuNivelConteudo.obtemIncrementoUmNivel();
                 meuFeedback.setNivelAtual(novoNivel);
                 int retorno = 0;
-                if (novoNivel != null){ //sinal de que pulou um nível
+                if (novoNivel != null) { //sinal de que pulou um nível
                     retorno = 1;
                 }
                 meuFeedback.setNiveisAvancados(retorno);
@@ -385,7 +444,7 @@ public class ClasseIntermediaria {
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                 listaFeedbacks.add(meuFeedback);
             }
-            for (int x = 0; x < listaFeedbacks.size(); x++){
+            for (int x = 0; x < listaFeedbacks.size(); x++) {
                 Log.d("Teste", "INTERMEDIARIA Lista Feedbacks = Conteudo: " + listaFeedbacks.get(x).getConteudo().getNomeConteudo() + ", nivel anterior: " + listaFeedbacks.get(x).getNivelAnterior() + ", nivel atual: " + listaFeedbacks.get(x).getNivelAtual());
             }
             Log.d("Teste", "Nível novo: " + meuNivelConteudo.getNivel());

@@ -34,7 +34,7 @@ public class RelatorioActivity extends AppCompatActivity {
 
         if (it.hasExtra("listaPerguntas")) {
             listaPerguntas = (ArrayList<Pergunta>) it.getSerializableExtra("listaPerguntas");
-            adapter = new RelatorioPerguntaAdapter(listaPerguntas, trataCliqueItem);
+            adapter = new RelatorioPerguntaAdapter(listaPerguntas, trataCliqueItem, RelatorioActivity.this);
             tvRelatorioVisualizaPerguntas.setLayoutManager(new LinearLayoutManager(RelatorioActivity.this));
             tvRelatorioVisualizaPerguntas.setItemAnimator(new DefaultItemAnimator());
             tvRelatorioVisualizaPerguntas.setAdapter(adapter);

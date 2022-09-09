@@ -1,5 +1,6 @@
 package com.example.user.componente;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,11 +19,13 @@ import java.util.ArrayList;
 public class RelatorioPerguntaAdapter extends RecyclerView.Adapter<RelatorioPerguntaAdapter.MyViewHolder> {
     private ArrayList<Pergunta> listaPerguntas;
     private PerguntaOnClickListener perguntaOnClickListener;
+    private Context context;
 
 
-    public RelatorioPerguntaAdapter(ArrayList<Pergunta> listaPerguntas, PerguntaOnClickListener perguntaOnClickListener) {
+    public RelatorioPerguntaAdapter(ArrayList<Pergunta> listaPerguntas, PerguntaOnClickListener perguntaOnClickListener, Context context) {
         this.listaPerguntas = listaPerguntas;
         this.perguntaOnClickListener = perguntaOnClickListener;
+        this.context = context;
     }
 
     @Override
@@ -36,16 +39,16 @@ public class RelatorioPerguntaAdapter extends RecyclerView.Adapter<RelatorioPerg
     @Override
     public void onBindViewHolder(final RelatorioPerguntaAdapter.MyViewHolder holder, final int position) {
         Pergunta perg = listaPerguntas.get(position);
-        holder.tvRelatorioPergunta.setText("Enunciado: "+perg.getEnunciado());
+        holder.tvRelatorioPergunta.setText("Questão: "+ position+1);
         holder.tvRelatorioConteudoPergunta.setText("Conteudo: "+perg.getConteudo().getNomeConteudo());
         String respostaCorreta = String.valueOf(perg.getAlternativaCorreta());
         String respostaEscolhida = String.valueOf(perg.getOpcaoEscolhida());
         holder.tvRelatorioRespostaCorreta.setText("Reposta Correta: "+ respostaCorreta);
         holder.tvRelatorioRespostaEscolhida.setText("Resposta Escolhida: "+ respostaEscolhida);
         if (respostaCorreta.equals(respostaEscolhida)){
-            holder.ivRelatorioResultado.setImageDrawable();
+            holder.ivRelatorioResultado.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_acerto));
         } else{
-            holder.ivRelatorioResultado.setVisibility(View.INVISIBLE);
+            holder.ivRelatorioResultado.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_erro));
         }
         /* CUIDADO: .setText() precisa sempre de String. Se for outro tipo de dado, deve ser feita a conversão com o String.valueOf() */
 

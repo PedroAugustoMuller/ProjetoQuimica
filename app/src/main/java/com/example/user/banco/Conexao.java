@@ -130,6 +130,7 @@ public class Conexao extends SQLiteOpenHelper {
     private static final String FK_USUARIO_NIVEL = "fk_idUsuario";
     private static final String FK_CONTEUDO_NIVEL = "fk_idConteudo";
     private static final String NIVEL = "nivel";
+    private static final String TENTATIVAS = "tentativas";
     private static final String IMAGEM_NIVEL = "imagem";
 
     @Override
@@ -215,6 +216,7 @@ public class Conexao extends SQLiteOpenHelper {
         sql = "CREATE TABLE "+TABELA_NIVEL_CONTEUDO+
                 "("+_ID_NIVEL_CONTEUDO+" integer primary key autoincrement," +
                 NIVEL+" INTEGER,"+
+                TENTATIVAS+ " INTEGER,"+
                 IMAGEM_NIVEL+" VARCHAR(45),"+
                 FK_USUARIO_NIVEL+" INTEGER,"+
                 FK_CONTEUDO_NIVEL+" INTEGER,"+
@@ -538,5 +540,9 @@ public class Conexao extends SQLiteOpenHelper {
 
     public static String getImagemNivel() {
         return IMAGEM_NIVEL;
+    }
+
+    public static String getTENTATIVAS() {
+        return TENTATIVAS;
     }
 }

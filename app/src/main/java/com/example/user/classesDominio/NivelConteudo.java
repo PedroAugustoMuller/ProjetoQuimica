@@ -20,6 +20,7 @@ public class NivelConteudo implements Serializable {
     private Usuario usuario;
     private Conteudo conteudo;
     private Image imagem;
+    private int tentativas; //PEDRO ADICIONEI NUMERO DE TENTATIVAS
 
     //construtor 1 - sem id
     public NivelConteudo(NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo) {
@@ -50,6 +51,18 @@ public class NivelConteudo implements Serializable {
         int retorno = -1;
         NivelConteudoEnum novoNivel = obtemIncrementoUmNivel();
         if (this.nivel != NivelConteudoEnum.DIAMANTE){
+            this.nivel = novoNivel;
+            retorno = 1;
+        } else {
+            retorno = 0;
+        }
+        return retorno;
+    }
+    //PEDRO DECAINIVEL
+    public int decaiUmNivel(){
+        int retorno =-1;
+        NivelConteudoEnum novoNivel = obtemDecaiUmNivel();
+        if (this.nivel != NivelConteudoEnum.COBRE){
             this.nivel = novoNivel;
             retorno = 1;
         } else {
@@ -112,6 +125,23 @@ public class NivelConteudo implements Serializable {
         }
         return retorno;
     }
+    //PEDRO OBTEMDECAINIVEL
+    public NivelConteudoEnum obtemDecaiUmNivel(){
+        NivelConteudoEnum retorno = null;
+        if (this.nivel == NivelConteudoEnum.DIAMANTE){
+            retorno = NivelConteudoEnum.OURO;
+        } else if (this.nivel == NivelConteudoEnum.OURO){
+            retorno = NivelConteudoEnum.PRATA;
+        } else if (this.nivel == NivelConteudoEnum.PRATA){
+            retorno = NivelConteudoEnum.BRONZE;
+        } else if (this.nivel == NivelConteudoEnum.BRONZE){
+            retorno = NivelConteudoEnum.COBRE;
+        } else {
+            retorno = null;
+        }
+        return retorno;
+    }
+
     public Drawable getImagemUpgrade(Context context){
         Drawable drawable = context.getResources().getDrawable(R.drawable.ic_upgrade);
         return drawable;
@@ -133,7 +163,6 @@ public class NivelConteudo implements Serializable {
         }
         return drawable;
     }
-
 
 
     // retorna o ícone do nivel conteudo (ENUM) recebido como parâmetro
@@ -214,4 +243,14 @@ public class NivelConteudo implements Serializable {
     public void setImagem(Image imagem) {
         this.imagem = imagem;
     }
+
+    public int getTentativas() {
+        return tentativas;
+    }
+
+    public void setTentativas(int tentativas) {
+        this.tentativas = tentativas;
+    }
 }
+
+

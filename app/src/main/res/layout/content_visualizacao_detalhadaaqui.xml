@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="7dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".VisualizacaoDetalhadaaquiActivity"
     tools:showIn="@layout/activity_visualizacao_detalhadaaqui">
@@ -12,66 +13,82 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enunciado da questão"/>
-    <EditText
+        android:text="Enunciado da questão"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaEnunciado"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaEnunciado"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opção A"/>
-    <EditText
+        android:text="Opção A"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaOpcaoA"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaOpcaoA"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opção B"/>
-    <EditText
+        android:text="Opção B"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaOpcaoB"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaOpcaoB"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opção C"/>
-    <EditText
+        android:text="Opção C"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaOpcaoC"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaOpcaoC"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opção D"/>
-    <EditText
+        android:text="Opção D"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaOpcaoD"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaOpcaoD"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opção E"/>
-    <EditText
+        android:text="Opção E"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaOpcaoE"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaOpcaoE"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Resposta Escolhida"/>
-    <EditText
+        android:text="Resposta Escolhida"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaRespostaEscolhida"/>
+        android:textStyle="bold"
+        android:id="@+id/tvVisualizacaoDetalhadaRespostaEscolhida"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Resposta Certa"/>
-    <EditText
+        android:text="Resposta Certa"
+        android:textSize="18dp"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etVisualizacaoDetalhadaRespostaCerta"/>
+        android:id="@+id/tvVisualizacaoDetalhadaRespostaCerta"
+        android:textStyle="bold"/>
 
 </LinearLayout>

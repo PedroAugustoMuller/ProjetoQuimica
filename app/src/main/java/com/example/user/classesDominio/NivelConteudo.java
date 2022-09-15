@@ -23,19 +23,21 @@ public class NivelConteudo implements Serializable {
     private int tentativas; //PEDRO ADICIONEI NUMERO DE TENTATIVAS
 
     //construtor 1 - sem id
-    public NivelConteudo(NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo) {
+    public NivelConteudo(NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas) {
         this.idNivelConteudo = -1;
         this.nivel = nivel;
         this.usuario = usuario;
         this.conteudo = conteudo;
+        this.tentativas = tentativas;
     }
 
     //construtor 2 - com id
-    public NivelConteudo(int idNivelConteudo, NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo) {
+    public NivelConteudo(int idNivelConteudo, NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas) {
         this.idNivelConteudo = idNivelConteudo;
         this.nivel = nivel;
         this.usuario = usuario;
         this.conteudo = conteudo;
+        this.tentativas = tentativas;
     }
 
     public NivelConteudo(NivelConteudoEnum nivel, Conteudo conteudo, Image imagem) {
@@ -69,6 +71,20 @@ public class NivelConteudo implements Serializable {
             retorno = 0;
         }
         return retorno;
+    }
+
+    public void incrementaTentativas(){
+        this.tentativas++;
+    }
+    public void decrementaTentativas(){
+        if (this.tentativas > 0){
+            this.tentativas--;
+        } else {
+            this.tentativas = 0;
+        }
+    }
+    public void zeraTentativas(){
+        this.tentativas = 0;
     }
 
     // obtem incrementaUmNivel

@@ -39,7 +39,7 @@ public class NivelConteudoDB {
         while (cursor.moveToNext()) {
             int idNivelConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdNivelConteudo()));
             int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNIVEL()));
-
+            int tentativas = cursor.getInt(cursor.getColumnIndex(Conexao.getTENTATIVAS()));
             int idConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getFkConteudoNivel()));
             String nomeConteudo = cursor.getString(cursor.getColumnIndex(Conexao.getNomeConteudo()));
 
@@ -58,7 +58,7 @@ public class NivelConteudoDB {
             }
 
             Conteudo meuConteudo = new Conteudo(idConteudo, nomeConteudo, tipoConteudo);
-            NivelConteudo meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo);
+            NivelConteudo meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo, tentativas);
 
             this.bancoDados.close();
 
@@ -82,6 +82,7 @@ public class NivelConteudoDB {
                 Log.d("Teste", "Obtive: " + cursor.toString());
                 int idNivelConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdNivelConteudo()));
                 int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNIVEL()));
+                int tentativas = cursor.getInt(cursor.getColumnIndex(Conexao.getTENTATIVAS()));
                 NivelConteudoEnum nivel = null;
 
                 if (nivelBanco == 1) {
@@ -96,11 +97,11 @@ public class NivelConteudoDB {
                     nivel = NivelConteudoEnum.DIAMANTE;
                 }
 
-                meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo);
+                meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo, tentativas);
 
             } else {
                 // senão encontrar o nível no banco, é pq o usuário está no nível inicial, nesse caso Cobre
-                meuNivelConteudo = new NivelConteudo(NivelConteudoEnum.COBRE, meuUsuario, meuConteudo);
+                meuNivelConteudo = new NivelConteudo(NivelConteudoEnum.COBRE, meuUsuario, meuConteudo, 0);
             }
             listaNiveisConteudos.add(meuNivelConteudo);
         }
@@ -120,6 +121,7 @@ public class NivelConteudoDB {
             Log.d("Teste", "Obtive: " + cursor.toString());
             int idNivelConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdNivelConteudo()));
             int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNIVEL()));
+            int tentativas = cursor.getInt(cursor.getColumnIndex(Conexao.getTENTATIVAS()));
             NivelConteudoEnum nivel = null;
 
             if (nivelBanco == 1) {
@@ -134,11 +136,11 @@ public class NivelConteudoDB {
                 nivel = NivelConteudoEnum.DIAMANTE;
             }
 
-            meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo);
+            meuNivelConteudo = new NivelConteudo(idNivelConteudo, nivel, meuUsuario, meuConteudo, tentativas);
 
         } else {
             // senão encontrar o nível no banco, é pq o usuário está no nível inicial, nesse caso Cobre
-            meuNivelConteudo = new NivelConteudo(NivelConteudoEnum.COBRE, meuUsuario, meuConteudo);
+            meuNivelConteudo = new NivelConteudo(NivelConteudoEnum.COBRE, meuUsuario, meuConteudo, 0);
         }
         this.bancoDados.close();
         return meuNivelConteudo;
@@ -256,6 +258,7 @@ public class NivelConteudoDB {
         valores = new ContentValues();
 
         valores.put(Conexao.getNIVEL(), meuNivelConteudo.getNivel().getValor());
+        valores.put(Conexao.getTENTATIVAS(), 0);
         valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
         valores.put(Conexao.getFkUsuarioNivel(), meuNivelConteudo.getUsuario().getIdUsuario());
 
@@ -301,7 +304,7 @@ public class NivelConteudoDB {
                 Log.d("Teste", "TENTATIVAS atualizadas com sucesso");
             }
         } else {
-            Log.d("Teste", "Entrei no else de atualizaTentativas em NivelConteudoDB!");
+            Log.d("Teste", "Entrei no else de incrementaNivel em NivelConteudoDB!");
             valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
             valores.put(Conexao.getTENTATIVAS(), meuNivelConteudo.getTentativas());
             valores.put(Conexao.getFkUsuarioNivel(), meuUsuario.getIdUsuario());
@@ -311,6 +314,8 @@ public class NivelConteudoDB {
                 int aux = (int) retorno;
                 meuNivelConteudo.setIdNivelConteudo(aux);
             }
+            Log.d("Teste", "Inseri no banco!" + valores.toString());
+            Log.d("Teste", "Tentativa no banco: " + retorno);
         }
         this.bancoDados.close();
     }

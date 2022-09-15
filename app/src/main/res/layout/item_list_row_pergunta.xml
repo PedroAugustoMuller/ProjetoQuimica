@@ -50,7 +50,7 @@
                         android:layout_height="100dp"
                         android:padding="4dp"
                         android:id="@+id/ivRelatorioResultado"
-                        android:src="@drawable/ic_acerto_branco"
+                        android:src="@drawable/ic_acerto"
                         android:visibility = "visible"/>
                 </TableRow>
             </TableLayout>

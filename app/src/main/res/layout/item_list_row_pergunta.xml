@@ -33,16 +33,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="teste2"
-                        android:id="@+id/tvRelatorioConteudoPergunta"/>
+                        android:id="@+id/tvRelatorioEnunciadoPergunta"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="teste3"
-                        android:id="@+id/tvRelatorioRespostaCorreta"/>
+                        android:id="@+id/tvRelatorioConteudoPergunta"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="teste4"
+                        android:id="@+id/tvRelatorioRespostaCorreta"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="teste5"
                         android:id="@+id/tvRelatorioRepostaEscolhida"/>
                     </LinearLayout>
                     <ImageView
@@ -54,9 +59,6 @@
                         android:visibility = "visible"/>
                 </TableRow>
             </TableLayout>
-
-
-
 
 
 

@@ -40,6 +40,14 @@ public class RelatorioPerguntaAdapter extends RecyclerView.Adapter<RelatorioPerg
     public void onBindViewHolder(final RelatorioPerguntaAdapter.MyViewHolder holder, final int position) {
         Pergunta perg = listaPerguntas.get(position);
         holder.tvRelatorioPergunta.setText("Questão: "+ position+1);
+        if(perg.getEnunciado().length()<= 10){
+            holder.tvRelatorioEnunciadoPergunta.setText("Enunciado: "+perg.getEnunciado());
+        }else{
+            String novoEnunciado = perg.getEnunciado().substring(0,10)+"...";
+            holder.tvRelatorioEnunciadoPergunta.setText(novoEnunciado);
+        }
+
+
         holder.tvRelatorioConteudoPergunta.setText("Conteudo: "+perg.getConteudo().getNomeConteudo());
         String respostaCorreta = String.valueOf(perg.getAlternativaCorreta());
         String respostaEscolhida = String.valueOf(perg.getOpcaoEscolhida());
@@ -70,12 +78,13 @@ public class RelatorioPerguntaAdapter extends RecyclerView.Adapter<RelatorioPerg
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvRelatorioPergunta, tvRelatorioConteudoPergunta, tvRelatorioRespostaCorreta, tvRelatorioRespostaEscolhida;
+        TextView tvRelatorioEnunciadoPergunta,tvRelatorioPergunta, tvRelatorioConteudoPergunta, tvRelatorioRespostaCorreta, tvRelatorioRespostaEscolhida;
         ImageView ivRelatorioResultado;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             //TextView
+            tvRelatorioEnunciadoPergunta = itemView.findViewById(R.id.tvRelatorioEnunciadoPergunta);
             tvRelatorioPergunta = itemView.findViewById(R.id.tvRelatorioPergunta);
             tvRelatorioConteudoPergunta = itemView.findViewById(R.id.tvRelatorioConteudoPergunta);
             tvRelatorioRespostaCorreta = itemView.findViewById(R.id.tvRelatorioRespostaCorreta);

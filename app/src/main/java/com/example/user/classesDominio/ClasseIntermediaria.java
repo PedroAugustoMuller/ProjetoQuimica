@@ -69,7 +69,6 @@ public class ClasseIntermediaria {
     public DesempenhoQuestionario calculaDesempenhoQuestionario(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks) {
         int acertos = 0;
         int erros = 0;
-        int tentativas = 0;
 
         ArrayList<NivelConteudo> listaNivelConteudoParaAtualizar = new ArrayList<>();
         ArrayList<NivelConteudo> listaNivelConteudoParaDecair = new ArrayList<>();
@@ -220,24 +219,24 @@ public class ClasseIntermediaria {
                 } else if (retorno == 0) {
                     Toast.makeText(context, "Parabéns!!! Você ja completou todos os níveis para o conteúdo: " + meuNivelConteudo.getConteudo().getNomeConteudo() + ". Agora você pode continuar praticando! \n A sua nota foi " + pontuacaoConteudo + ". Será que você consegue se superar?", Toast.LENGTH_SHORT).show();
                 }
-                meuNivelConteudo.setTentativas(0);
+                meuNivelConteudo.zeraTentativas();
+                atualizaTentativas(meuNivelConteudo, meuUsuario);
 
             } else if (pontuacaoConteudo >= 65) { //PEDRO - Número de tentativas decrementado
-                meuNivelConteudo.setTentativas(meuNivelConteudo.getTentativas() - 1);
+                meuNivelConteudo.decrementaTentativas();
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                 listaFeedbacks.add(meuFeedback);
                 atualizaTentativas(meuNivelConteudo, meuUsuario);
-            } else if (pontuacaoConteudo <=10){ //Pedro - AVISO DE TENTATIVAS
-                meuNivelConteudo.setTentativas(meuNivelConteudo.getTentativas()+1);
+            } else if (pontuacaoConteudo <=10 && meuNivelConteudo.getTentativas() < 4){ //Pedro - AVISO DE TENTATIVAS
+                meuNivelConteudo.incrementaTentativas();
                 System.out.println("Tentativas: "+meuNivelConteudo.getTentativas());
-                System.out.println(meuNivelConteudo.getTentativas());
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                 listaFeedbacks.add(meuFeedback);
                 Toast.makeText(context, "Sua nota foi abaixo ou igual a 10, caso isso se repita mais "+ (4 - meuNivelConteudo.getTentativas())+" você descerá de nível", Toast.LENGTH_SHORT).show();
                 atualizaTentativas(meuNivelConteudo, meuUsuario);
 
             } else if (pontuacaoConteudo <=10 && meuNivelConteudo.getTentativas() >= 4){ //PEDRO - DECAI NIVEL
-                meuNivelConteudo.setTentativas(0);
+                meuNivelConteudo.zeraTentativas();
 
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel());
                 NivelConteudoEnum novoNivel = meuNivelConteudo.obtemDecaiUmNivel();
@@ -257,6 +256,7 @@ public class ClasseIntermediaria {
                 } else {
                     Toast.makeText(context, "Parece que você está com dificuldades,gostaria de ler o material de apoio?", Toast.LENGTH_SHORT).show();
                 }
+                atualizaTentativas(meuNivelConteudo, meuUsuario);
             }
             else { // precisa indicar no FeedBack que não teve avanço
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);

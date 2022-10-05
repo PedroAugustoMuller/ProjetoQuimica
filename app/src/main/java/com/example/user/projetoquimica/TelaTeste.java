@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -64,11 +65,11 @@ public class TelaTeste extends AppCompatActivity {
                         Conteudo meuConteudo = listaConteudos.get(indice - 1);
                         int nivel = spNiveisConteudos.getSelectedItemPosition();
                         NivelConteudoEnum nivel2 = null;
-                        String retornoNivel = null;
+                        String retornoNivel;
                         NivelConteudo meuNivelConteudo;
 
                         meuNivelConteudo = nivelConteudoDB.buscaConteudoComNivel(meuConteudo, informacoesApp.getMeuUsuario());
-
+                        Log.d("Teste", "Até aqui foi 1");
                         if (nivel == 1) {
                             nivel2 = NivelConteudoEnum.COBRE;
                         } else if (nivel == 2) {
@@ -80,23 +81,25 @@ public class TelaTeste extends AppCompatActivity {
                         } else if (nivel == 5) {
                             nivel2 = NivelConteudoEnum.DIAMANTE;
                         }
+                        Log.d("Teste", "Até aqui foi 2");
 
                         if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
                             if (nivel2 != NivelConteudoEnum.COBRE) {
                                 meuNivelConteudo.setNivel(nivel2);
                                 retornoNivel = nivelConteudoDB.insereNivel(meuNivelConteudo);
                             } else {
-                                retornoNivel = nivelConteudoDB.deletaNivelConteudo(meuNivelConteudo.getIdNivelConteudo());
+                                retornoNivel = nivelConteudoDB.deletaNivelConteudo(meuNivelConteudo.getIdNivelConteudo());  //PEDRO - Substituir por altera nível passando cobre para não dar erro ao carregar as listas
                                 Toast.makeText(TelaTeste.this, "O conteúdo já está em cobre", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             if (nivel2 == NivelConteudoEnum.COBRE) {
-                                retornoNivel = nivelConteudoDB.deletaNivelConteudo(meuNivelConteudo.getIdNivelConteudo());
+                                retornoNivel = nivelConteudoDB.deletaNivelConteudo(meuNivelConteudo.getIdNivelConteudo()); //PEDRO - Substituir por altera nível passando cobre para não dar erro ao carregar as listas
                             } else {
                                 meuNivelConteudo.setNivel(nivel2);
                                 retornoNivel = nivelConteudoDB.alteraNivel(meuNivelConteudo);
                             }
                         }
+
 
                         Toast.makeText(TelaTeste.this, retornoNivel, Toast.LENGTH_SHORT).show();
                     } else {

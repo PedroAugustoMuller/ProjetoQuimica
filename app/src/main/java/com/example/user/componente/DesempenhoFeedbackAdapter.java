@@ -54,6 +54,9 @@ public class DesempenhoFeedbackAdapter extends RecyclerView.Adapter<DesempenhoFe
         if (meuFeedback.getNiveisAvancados() > 0) {
             holder.imImagemNivel.setImageDrawable(meuNivelConteudo.getImagemNivelParametro(meuFeedback.getNivelAnterior(), this.context)); // mostrar o anterior para indicar que atualizou! Esse comportamento?
             holder.imImagemUpgrade.setImageDrawable(meuNivelConteudo.getImagemUpgrade(this.context));
+        } else if (meuFeedback.getNiveisAvancados() < 0){
+            holder.imImagemNivel.setImageDrawable(meuNivelConteudo.getImagemNivelParametro(meuFeedback.getNivelAnterior(), this.context));
+            holder.imImagemUpgrade.setImageDrawable(this.context.getResources().getDrawable(R.drawable.ic_downgrade)); //PEDRO - Depois adicionar a imagem de downgrade em NivelConteudo e NivelConteudoDB
         } else {
             holder.imImagemNivel.setImageDrawable(meuNivelConteudo.getImagemNivel(this.context));
         }

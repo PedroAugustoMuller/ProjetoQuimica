@@ -145,7 +145,7 @@ public class EntradaDePerguntasActivity extends AppCompatActivity {
 
                                                         Pergunta umaPergunta = new Pergunta(enunciado, opcaoA, opcaoB, opcaoC, opcaoD, opcaoE, imagem, testePrevio, meuConteudo, respostaCerta, nivelDificuldade, questaoVestibular);
                                                         String retornoPergunta = perguntaDB.inserePergunta(umaPergunta);
-                                                        limpaCampos();
+                                                        //limpaCampos();
 
                                                         Toast.makeText(EntradaDePerguntasActivity.this, retornoPergunta, Toast.LENGTH_SHORT).show();
 

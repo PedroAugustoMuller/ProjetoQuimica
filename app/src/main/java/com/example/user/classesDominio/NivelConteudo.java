@@ -21,23 +21,26 @@ public class NivelConteudo implements Serializable {
     private Conteudo conteudo;
     private Image imagem;
     private int tentativas; //PEDRO ADICIONEI NUMERO DE TENTATIVAS
+    private int vidas; //PEDRO - adicionei número de vidas restantes, por enquanto é um int, podemos mudar para float no futuro
 
     //construtor 1 - sem id
-    public NivelConteudo(NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas) {
+    public NivelConteudo(NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas, int vidas) {
         this.idNivelConteudo = -1;
         this.nivel = nivel;
         this.usuario = usuario;
         this.conteudo = conteudo;
         this.tentativas = tentativas;
+        this.vidas = vidas;
     }
 
     //construtor 2 - com id
-    public NivelConteudo(int idNivelConteudo, NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas) {
+    public NivelConteudo(int idNivelConteudo, NivelConteudoEnum nivel, Usuario usuario, Conteudo conteudo, int tentativas, int vidas) {
         this.idNivelConteudo = idNivelConteudo;
         this.nivel = nivel;
         this.usuario = usuario;
         this.conteudo = conteudo;
         this.tentativas = tentativas;
+        this.vidas = vidas;
     }
 
     public NivelConteudo(NivelConteudoEnum nivel, Conteudo conteudo, Image imagem) {
@@ -71,20 +74,6 @@ public class NivelConteudo implements Serializable {
             retorno = 0;
         }
         return retorno;
-    }
-
-    public void incrementaTentativas(){
-        this.tentativas++;
-    }
-    public void decrementaTentativas(){
-        if (this.tentativas > 0){
-            this.tentativas--;
-        } else {
-            this.tentativas = 0;
-        }
-    }
-    public void zeraTentativas(){
-        this.tentativas = 0;
     }
 
     // obtem incrementaUmNivel
@@ -266,6 +255,14 @@ public class NivelConteudo implements Serializable {
 
     public void setTentativas(int tentativas) {
         this.tentativas = tentativas;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
 }
 

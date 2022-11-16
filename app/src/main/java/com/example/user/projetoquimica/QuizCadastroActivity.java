@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class QuizCadastroActivity extends AppCompatActivity {
-    Button bCadastroPerguntas, bCadastroConteudos, bQuiz, bConteudoNivel, bVisualizarNiveisConteudos,
-    bDiagnostico;
+    Button bCadastroPerguntas, bCadastroConteudos, bQuiz, bConteudoNivel, bVisualizarNiveisConteudos, bDiagnostico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -185,7 +185,6 @@ public class ClasseIntermediaria {
 
             Log.d("Teste", "Pontuação conteúdo: " + pontuacaoConteudo);
             // atualizando o novo início
-            pontuacaoConteudo = Math.round(pontuacaoConteudo);
             inicio = fim;
 
             DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo);

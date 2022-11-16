@@ -54,6 +54,12 @@
                 android:text="Diagnóstico"
                 android:id="@+id/bDiagnostico"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gráfico"
+                android:id="@+id/bGraficoDesempenhoConteudo"/>
+
         </LinearLayout>
 
     </ScrollView>

@@ -12,7 +12,7 @@ import android.widget.Button;
 public class QuizCadastroActivity extends AppCompatActivity {
 
     Button bCadastroPerguntas, bCadastroConteudos, bQuiz, bConteudoNivel, bVisualizarNiveisConteudos,
-    bDiagnostico, bGraficoDesempenhoConteudo, bGraficoDezQuestionarios;
+    bDiagnostico, bGraficoDesempenhoConteudo, bGraficoDezQuestionarios, bGraficoNiveisPorConteudo;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class QuizCadastroActivity extends AppCompatActivity {
         bDiagnostico = findViewById(R.id.bDiagnostico);
         bGraficoDesempenhoConteudo = findViewById(R.id.bGraficoDesempenhoConteudo);
         bGraficoDezQuestionarios = findViewById(R.id.bGraficoDezQuestionarios);
+        bGraficoNiveisPorConteudo = findViewById(R.id.bGraficoNiveisPorConteudo);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,6 +94,13 @@ public class QuizCadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(QuizCadastroActivity.this, GraficoDezQuestionariosActivity.class);
+                startActivity(it);
+            }
+        });
+        bGraficoNiveisPorConteudo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(QuizCadastroActivity.this, GraficoNiveisPorConteudoActivity.class);
                 startActivity(it);
             }
         });

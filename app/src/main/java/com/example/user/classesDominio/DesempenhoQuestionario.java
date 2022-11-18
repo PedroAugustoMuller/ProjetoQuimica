@@ -1,6 +1,5 @@
 package com.example.user.classesDominio;
 
-import com.example.user.classesDominio.Conteudo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class DesempenhoQuestionario implements Serializable {
         this.idDesempenhoQuestionario = idDesempenhoQuestionario;
         this.data = data;
         this.pontuacaoFinal = pontuacaoFinal;
-        this.pontuacaoFinal = tipoDesempenho;
+        this.tipoDesempenho = tipoDesempenho;
     }
 
     public DesempenhoQuestionario(int idDesempenhoQuestionario, Date data, float pontuacaoFinal, ArrayList<DesempenhoConteudo> listaDesempenhoConteudos, Usuario meuUsuario) {
@@ -38,7 +37,7 @@ public class DesempenhoQuestionario implements Serializable {
     public DesempenhoQuestionario(Date data, int tipoDesempenho) {
         this.data = data;
         this.tipoDesempenho = tipoDesempenho;
-        this.listaDesempenhoConteudos = new ArrayList<DesempenhoConteudo>();
+        this.listaDesempenhoConteudos = new ArrayList<>();
     }
 
     public void calculaPontuacaoFinal() {

@@ -76,7 +76,7 @@ public class DesempenhoQuestionarioDB {
             } catch(ParseException parse) {
 
             }
-            float pontuacaoFinal = cursor.getFloat(cursor.getColumnIndex(Conexao.getPontuacaoConteudo()));
+            float pontuacaoFinal = cursor.getFloat(cursor.getColumnIndex(Conexao.getPontuacaoQuestionario()));
 
             DesempenhoQuestionario meuDesempenhoQuestionario = new DesempenhoQuestionario(idDesempenhoQuestionario, data, pontuacaoFinal, tipoQuiz);
             this.bancoDados.close();

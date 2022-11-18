@@ -28,7 +28,8 @@
                 android:id="@+id/rvRelatorioVisualizaPerguntas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_list_row_pergunta"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

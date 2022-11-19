@@ -112,7 +112,6 @@ public class NivelConteudoDB {
     }
 
     public NivelConteudo buscaConteudoComNivel(Conteudo meuConteudo, Usuario meuUsuario) {
-        ArrayList<NivelConteudo> listaNiveisConteudos = new ArrayList<>();
 
         this.bancoDados = this.conexao.getWritableDatabase();
 

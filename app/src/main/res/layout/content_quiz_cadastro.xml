@@ -60,6 +60,18 @@
                 android:text="Gráficos de Desempenho por Conteúdo"
                 android:id="@+id/bGraficoDesempenhoConteudo"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10Questionários"
+                android:id="@+id/bGraficoDezQuestionarios"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gráfico Niveis Por Conteudo"
+                android:id="@+id/bGraficoNiveisPorConteudo"/>
+
         </LinearLayout>
 
     </ScrollView>

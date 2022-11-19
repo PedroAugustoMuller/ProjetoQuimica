@@ -9,11 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.user.componente.ListaConteudosAdapter;
+
 public class QuizCadastroActivity extends AppCompatActivity {
 
     Button bCadastroPerguntas, bCadastroConteudos, bQuiz, bConteudoNivel, bVisualizarNiveisConteudos,
     bDiagnostico, bGraficoDesempenhoConteudo;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,7 @@ public class QuizCadastroActivity extends AppCompatActivity {
         bGraficoDesempenhoConteudo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(QuizCadastroActivity.this, GraficoDesempenhoConteudo.class);
+                Intent it = new Intent(QuizCadastroActivity.this, ListaConteudosActivity.class);
                 startActivity(it);
             }
         });

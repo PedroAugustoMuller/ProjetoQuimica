@@ -69,4 +69,5 @@
     <string name="title_activity_visualizacao_detalhadaaqui">VisualizacaoDetalhadaaquiActivity
     </string>
     <string name="title_activity_grafico_desempenho_conteudo">GraficoDesempenhoConteudo</string>
+    <string name="title_activity_lista_conteudos">ListaConteudosActivity</string>
 </resources>

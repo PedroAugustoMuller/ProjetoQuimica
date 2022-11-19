@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ListaConteudosActivity"
+            android:label="@string/title_activity_lista_conteudos"
+            android:parentActivityName=".QuizCadastroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+        </activity>
+        <activity
             android:name=".GraficoDesempenhoConteudo"
             android:label="@string/title_activity_grafico_desempenho_conteudo"
             android:parentActivityName=".QuizCadastroActivity"

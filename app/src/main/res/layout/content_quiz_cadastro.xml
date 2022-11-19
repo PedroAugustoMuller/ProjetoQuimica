@@ -57,7 +57,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gráfico"
+                android:text="Gráficos de Desempenho por Conteúdo"
                 android:id="@+id/bGraficoDesempenhoConteudo"/>
 
         </LinearLayout>

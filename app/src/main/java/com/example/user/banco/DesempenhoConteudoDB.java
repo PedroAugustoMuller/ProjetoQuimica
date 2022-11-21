@@ -85,8 +85,9 @@ public class DesempenhoConteudoDB {
 
     public ArrayList<DesempenhoConteudo> buscaDesempenhoConteudo() {
         ArrayList<DesempenhoConteudo> listaDesempenhos = new ArrayList<>();
+        String where = Conexao.getTabelaDesempenhoConteudo() +" INNER JOIN "+ Conexao.getTabelaConteudo(); //INNER JOIN AQUI ULTRA NECESSÁRIO
         this.bancoDados = this.conexao.getWritableDatabase();
-        Cursor cursor = this.bancoDados.query(Conexao.getTabelaDesempenhoConteudo(),null, null, null, null, null, null);
+        Cursor cursor = this.bancoDados.query(where,null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
 

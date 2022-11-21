@@ -233,6 +233,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
         </activity>
+
     </application>
 
 </manifest>

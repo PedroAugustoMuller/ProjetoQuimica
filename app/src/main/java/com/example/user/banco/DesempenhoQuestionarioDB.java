@@ -55,6 +55,7 @@ public class DesempenhoQuestionarioDB {
 
     //METODO UTILIZADO PARA OBTER O DESEMPENHO DO QUESTIONARIO
     //PROVAVELMENTE IREMOS FILTRAR (OU NAO) A ORIGEM DO DESEMPENHO QUESTIONARIO (QUIZ OU DIAGNOSTICO)
+
     public ArrayList<DesempenhoQuestionario> buscaDesempenhoQuestionario(Usuario meuUsuario) {
         ArrayList<DesempenhoQuestionario> listaDesempenhos = new ArrayList<>();
         String consulta = Conexao.getTabelaDesempenhoQuestionario() + " INNER JOIN " + Conexao.getTabelaUsuario()

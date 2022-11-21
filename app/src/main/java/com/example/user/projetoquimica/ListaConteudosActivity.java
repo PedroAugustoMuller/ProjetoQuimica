@@ -51,8 +51,8 @@ public class ListaConteudosActivity extends AppCompatActivity {
         public void onClickConteudo(View view, int position) {
             Conteudo cont = lstConteudos.get(position);
             Intent it = new Intent(ListaConteudosActivity.this, GraficoDesempenhoConteudo.class);
-            startActivity(it);
             it.putExtra("conteudo", cont);
+            startActivity(it);
         }
     };
 

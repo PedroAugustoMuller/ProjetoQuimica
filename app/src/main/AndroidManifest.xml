@@ -32,6 +32,23 @@
                 android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
         </activity>
         <activity
+            android:name=".GraficoDezQuestionariosActivity"
+            android:label="GraficoDezQuestionariosActivity"
+            android:parentActivityName=".QuizCadastroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+        </activity>
+        <activity android:name=".GraficoNiveisPorConteudoActivity"
+            android:label="GraficoNiveisPorConteudoActivity"
+            android:parentActivityName=".QuizCadastroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.projetoquimica.GraficoNiveisPorConteudoActivity"/>
+        </activity>
+        <activity
             android:name=".VisualizacaoDetalhadaaquiActivity"
             android:label="@string/title_activity_visualizacao_detalhadaaqui"
             android:parentActivityName=".RelatorioActivity"

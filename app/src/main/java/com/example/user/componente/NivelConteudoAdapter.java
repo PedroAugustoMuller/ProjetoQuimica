@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.classesDominio.NivelConteudo;
-import com.example.user.projetoquimica.R;
+import com.example.user.projetoquimicaConsolidados.R;
 
 import java.util.List;
 

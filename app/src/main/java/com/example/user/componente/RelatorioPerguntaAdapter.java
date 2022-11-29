@@ -1,7 +1,6 @@
 package com.example.user.componente;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 
 import com.example.user.classesDominio.Pergunta;
-import com.example.user.projetoquimica.R;
+import com.example.user.projetoquimicaConsolidados.R;
 
 import java.util.ArrayList;
 

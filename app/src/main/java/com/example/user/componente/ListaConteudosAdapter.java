@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.classesDominio.Conteudo;
-import com.example.user.classesDominio.Pergunta;
-import com.example.user.projetoquimica.R;
+import com.example.user.projetoquimicaConsolidados.R;
 
 import java.util.ArrayList;
 

@@ -1,16 +1,13 @@
 package com.example.user.classesDominio;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
-import android.widget.Toast;
 
 import com.example.user.componente.NivelConteudoEnum;
-import com.example.user.projetoquimica.R;
+import com.example.user.projetoquimicaConsolidados.R;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import static com.example.user.componente.NivelConteudoEnum.BRONZE;
 

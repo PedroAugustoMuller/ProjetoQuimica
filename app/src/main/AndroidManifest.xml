@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.user.projetoquimica">
+    package="com.example.user.projetoquimicaConsolidados">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,162 +14,162 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ListaConteudosActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.VisualizacaoConteudosActivity"
             android:label="@string/title_activity_lista_conteudos"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".GraficoDesempenhoConteudo"
+            android:name="com.example.user.projetoquimicaConsolidados.GraficoDesempenhoConteudo"
             android:label="@string/title_activity_grafico_desempenho_conteudo"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".GraficoDezQuestionariosActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.GraficoDezQuestionariosActivity"
             android:label="GraficoDezQuestionariosActivity"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
-        <activity android:name=".GraficoNiveisPorConteudoActivity"
+        <activity android:name="com.example.user.projetoquimicaConsolidados.GraficoNiveisPorConteudoActivity"
             android:label="GraficoNiveisPorConteudoActivity"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.GraficoNiveisPorConteudoActivity"/>
+                android:value="com.example.user.projetoquimicaConsolidados.GraficoNiveisPorConteudoActivity"/>
         </activity>
         <activity
-            android:name=".VisualizacaoDetalhadaaquiActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.VisualizacaoDetalhadaPerguntasActivity"
             android:label="@string/title_activity_visualizacao_detalhadaaqui"
-            android:parentActivityName=".RelatorioActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizRelatorioActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.RelatorioActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizRelatorioActivity" />
         </activity>
         <activity
-            android:name=".RelatorioActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.QuizRelatorioActivity"
             android:label="@string/title_activity_relatorio"
-            android:parentActivityName=".QuizActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizResultadoActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizResultadoActivity" />
         </activity>
         <activity
-            android:name=".VisualizaUpgradeActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.VisualizaPercursoActivity"
             android:label="@string/title_activity_visualiza_upgrade"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".QuizDiagnosticoActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.QuizActivity"
             android:label="@string/title_activity_quiz_diagnostico"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FeedbackActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.FeedbackActivity"
             android:label="@string/title_activity_feedback"
-            android:parentActivityName=".DiagnosticoActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.DiagnosticoActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizDiagnosticoActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizActivity" />
         </activity>
         <activity
-            android:name=".DiagnosticoActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.DiagnosticoActivity"
             android:label="@string/title_activity_diagnostico"
-            android:parentActivityName=".FiltroDiagnosticoActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.FiltroDiagnosticoActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.FiltroDiagnosticoActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.FiltroDiagnosticoActivity" />
         </activity>
         <activity
-            android:name=".FiltroDiagnosticoActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.FiltroDiagnosticoActivity"
             android:label="@string/title_activity_filtro_diagnostico"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".VisualizacaoNiveisActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.VisualizacaoNiveisActivity"
             android:label="@string/title_activity_visualizacao_niveis"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".TelaTeste"
+            android:name="com.example.user.projetoquimicaTeste.TelaTeste"
             android:label="@string/title_activity_tela_teste"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".FiltroActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.QuizFiltroActivity"
             android:label="@string/title_activity_filtro"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".QuizCadastroActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:label="@string/title_activity_quiz_cadastro"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".EntradaDeConteudosActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.CadastroConteudoActivity"
             android:label="@string/title_activity_entrada_de_conteudos"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".EntradaDePerguntasActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.CadastroPerguntaActivity"
             android:label="@string/title_activity_entrada_de_perguntas"
-            android:parentActivityName=".QuizCadastroActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.QuizMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.QuizCadastroActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
-            android:name=".CadastroActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.CadastroUsuarioActivity"
             android:label="@string/title_activity_cadastro"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainLoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.LoginActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainLoginActivity" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.MainLoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.MainSplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -179,76 +179,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.MainTipoActivity"
             android:label="@string/title_activity_menu"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainLoginActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.LoginActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainLoginActivity" />
         </activity>
         <activity
-            android:name=".MenuPrincipalActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:label="@string/title_activity_menu_principal"
-            android:parentActivityName=".MenuActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainTipoActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainTipoActivity" />
         </activity>
         <activity
-            android:name=".ResumosActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.ResumosActivity"
             android:label="@string/title_activity_resumos"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".QuizActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.QuizResultadoActivity"
             android:label="@string/title_activity_quiz"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".TabelaPeriodicaActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.TabelaPeriodicaActivity"
             android:label="@string/title_activity_tabela_periodica"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".GaleriaActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.GaleriaActivity"
             android:label="@string/title_activity_galeria"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".MontarCompostoActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.MontarCompostoActivity"
             android:label="@string/title_activity_montar_composto"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
-            android:name=".PesquisaElementoActivity"
+            android:name="com.example.user.projetoquimicaConsolidados.com.example.user.projetoquimicaFuturo.PesquisaElementoActivity"
             android:label="@string/title_activity_pesquisa_elemento"
-            android:parentActivityName=".MenuPrincipalActivity"
+            android:parentActivityName="com.example.user.projetoquimicaConsolidados.MainMenuActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimica.MenuPrincipalActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
 
     </application>

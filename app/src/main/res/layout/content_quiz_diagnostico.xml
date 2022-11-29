@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".QuizDiagnosticoActivity"
+    tools:context=".QuizActivity"
     android:padding="8dp"
     tools:showIn="@layout/activity_quiz_diagnostico">
 

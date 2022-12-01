@@ -5,69 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".QuizResultadoActivity"
+    tools:context=".QuizActivity"
+    android:padding="8dp"
     tools:showIn="@layout/activity_quiz">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/tvTituloDesempenho"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data / Horário:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvDesempenhoData"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pontuação Final:"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvDesempenhoPontuacaoFinal"/>
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Desempenho por Conteúdo:"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rvDesempenhoConteudo">
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-    <Button
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:text="Relatório de questões"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_relatorio"
-        android:id="@+id/bQuizRelatorio"
-        android:textColor="#FFFFFF"
-        android:textAllCaps="false"
-        android:background="@drawable/botaoorganica_customizado"
-        android:textSize="16dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPosicao"
+                android:layout_gravity="right"
+                android:paddingRight="6dp"
+                android:paddingTop="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvConteudo"
+                android:layout_gravity="right"
+                android:paddingRight="6dp"
+                android:paddingTop="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPergunta"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImagemPergunta"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rgAlternativa">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbOpcaoA"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbOpcaoB"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbOpcaoC"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbOpcaoD"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbOpcaoE" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bAnterior"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:text="Anterior"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    android:background="@drawable/botaoorganica_customizado"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bProximo"
+                    android:layout_weight="1"
+                    android:text="Próximo"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/botaoorganica_customizado"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bFinalizar"
+                android:layout_marginTop="8dp"
+                android:text="Finalizar"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:background="@drawable/botaoorganica_customizado"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

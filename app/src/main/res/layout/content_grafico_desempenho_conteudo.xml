@@ -14,4 +14,39 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/linechartDesempenhoConteudo"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:id="@+id/rgSelecionaNivelConteudo">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COBRE"
+            android:id="@+id/rbGraficoNivelConteudoCobre"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BRONZE"
+            android:id="@+id/rbGraficoNivelConteudoBronze"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRATA"
+            android:id="@+id/rbGraficoNivelConteudoPrata"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OURO"
+            android:id="@+id/rbGraficoNivelConteudoOuro"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DIAMANTE"
+            android:id="@+id/rbGraficoNivelConteudoDiamante"/>
+    </RadioGroup>
+
+
 </LinearLayout>

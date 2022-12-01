@@ -1,6 +1,7 @@
 package com.example.user.classesDominio;
 
 import com.example.user.classesDominio.Conteudo;
+import com.example.user.componente.NivelConteudoEnum;
 
 import java.io.Serializable;
 
@@ -11,6 +12,7 @@ public class DesempenhoConteudo implements Serializable {
     private int quantidadeAcertos;
     private int quantidadeErros;
     private float pontuacaoConteudo;
+    private NivelConteudoEnum nivelConteudoEnum;
 
     public DesempenhoConteudo(int idDesempenhoConteudo, Conteudo conteudo, int quantidadePerguntas, int quantidadeAcertos, int quantidadeErros, float pontuacaoConteudo) {
         this.idDesempenhoConteudo = idDesempenhoConteudo;
@@ -21,12 +23,31 @@ public class DesempenhoConteudo implements Serializable {
         this.pontuacaoConteudo = pontuacaoConteudo;
     }
 
-    public DesempenhoConteudo(Conteudo conteudo, int quantidadePerguntas, int quantidadeAcertos, int quantidadeErros, float pontuacaoConteudo) {
+    public DesempenhoConteudo(int idDesempenhoConteudo, Conteudo conteudo, int quantidadePerguntas, int quantidadeAcertos, int quantidadeErros, float pontuacaoConteudo, NivelConteudoEnum nivelConteudoEnum) {
+        this.idDesempenhoConteudo = idDesempenhoConteudo;
         this.conteudo = conteudo;
         this.quantidadePerguntas = quantidadePerguntas;
         this.quantidadeAcertos = quantidadeAcertos;
         this.quantidadeErros = quantidadeErros;
         this.pontuacaoConteudo = pontuacaoConteudo;
+        this.nivelConteudoEnum = nivelConteudoEnum;
+    }
+
+    public DesempenhoConteudo(Conteudo conteudo, int quantidadePerguntas, int quantidadeAcertos, int quantidadeErros, float pontuacaoConteudo, NivelConteudoEnum nivelConteudoEnum) {
+        this.conteudo = conteudo;
+        this.quantidadePerguntas = quantidadePerguntas;
+        this.quantidadeAcertos = quantidadeAcertos;
+        this.quantidadeErros = quantidadeErros;
+        this.pontuacaoConteudo = pontuacaoConteudo;
+        this.nivelConteudoEnum = nivelConteudoEnum;
+    }
+
+    public NivelConteudoEnum getNivelConteudoEnum() {
+        return nivelConteudoEnum;
+    }
+
+    public void setNivelConteudoEnum(NivelConteudoEnum nivelConteudoEnum) {
+        this.nivelConteudoEnum = nivelConteudoEnum;
     }
 
     public Conteudo getConteudo() {

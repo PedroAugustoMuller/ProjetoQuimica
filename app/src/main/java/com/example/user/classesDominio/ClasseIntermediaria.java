@@ -187,7 +187,7 @@ public class ClasseIntermediaria {
             // atualizando o novo início
             inicio = fim;
 
-            DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo);
+            DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo, meuNivelConteudo.getNivel());
 
             // adicionando no desempenho do questionário
             desempenhoQuestionario.getListaDesempenhoConteudos().add(desempenhoConteudo);
@@ -414,7 +414,7 @@ public class ClasseIntermediaria {
             // atualizando o novo início
             inicio = fim;
 
-            DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo);
+            DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo, meuNivelConteudo.getNivel());
 
             // adicionando no desempenho do questionário
             desempenhoQuestionario.getListaDesempenhoConteudos().add(desempenhoConteudo);

@@ -8,7 +8,7 @@
     tools:context=".QuizFiltroActivity"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:showIn="@layout/activity_filtro">
+    tools:showIn="@layout/activity_quiz_filtro">
 
     <ScrollView
         android:layout_width="match_parent"

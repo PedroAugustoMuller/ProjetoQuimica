@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".VisualizaPercursoActivity"
-    tools:showIn="@layout/activity_visualiza_upgrade"
+    tools:showIn="@layout/activity_visualiza_percurso"
     android:padding="@dimen/fab_margin">
 
     <TextView

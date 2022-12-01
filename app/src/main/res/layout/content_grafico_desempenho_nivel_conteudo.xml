@@ -6,14 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".VisualizacaoConteudosActivity"
-    tools:showIn="@layout/activity_lista_conteudos">
+    tools:context="com.example.user.projetoquimicaTeste.GraficoDesempenhoNivelConteudo"
+    tools:showIn="@layout/activity_grafico_desempenho_nivel_conteudo">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvListaConteudos"
+    <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/item_list_row">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/linechartDesempenhoNivelConteudo"/>
+
 </LinearLayout>

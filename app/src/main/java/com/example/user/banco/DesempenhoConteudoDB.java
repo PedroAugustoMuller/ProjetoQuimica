@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.example.user.classesDominio.Conteudo;
 import com.example.user.classesDominio.DesempenhoConteudo;
+import com.example.user.classesDominio.NivelConteudo;
+import com.example.user.componente.NivelConteudoEnum;
 
 import java.util.ArrayList;
 
@@ -110,6 +112,51 @@ public class DesempenhoConteudoDB {
             listaDesempenhos.add(meuDesempenhoConteudo);
         }
         return listaDesempenhos;
+    }
+
+    public ArrayList<DesempenhoConteudo> buscaDesempenhoConteudoFiltro(Conteudo conteudo, int nivelConteudo) {
+        ArrayList<DesempenhoConteudo> listaDesempenhosFiltro = new ArrayList<>();
+        String where = Conexao.getTabelaDesempenhoConteudo() +" INNER JOIN "+ Conexao.getTabelaConteudo()+ " INNER JOIN "+ Conexao.getTabelaNivelConteudo()+
+                " WHERE "+ conteudo.getIdConteudo()+ " = "+ Conexao.getFkConteudoNivel()+ " AND "+ nivelConteudo+ " = "+ Conexao.getNIVEL();
+        this.bancoDados = this.conexao.getWritableDatabase();
+        Cursor cursor = this.bancoDados.query(where,null, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+
+            int idDesempenhoConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdDesempenhoConteudo()));
+            int quantidadePerguntas = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadePerguntas()));
+            int quantidadeAcertos = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadeAcertos()));
+            int quantidadeErros = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadeErros()));
+            float pontuacaoConteudo = cursor.getFloat(cursor.getColumnIndex(Conexao.getPontuacaoConteudo()));
+            int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNIVEL()));
+
+            NivelConteudoEnum nivel = null;
+            if (nivelBanco == 1) {
+                nivel = NivelConteudoEnum.COBRE;
+            } else if (nivelBanco == 2) {
+                nivel = NivelConteudoEnum.BRONZE;
+            } else if (nivelBanco == 3) {
+                nivel = NivelConteudoEnum.PRATA;
+            } else if (nivelBanco == 4) {
+                nivel = NivelConteudoEnum.OURO;
+            } else if (nivelBanco == 5) {
+                nivel = NivelConteudoEnum.DIAMANTE;
+            }
+
+            //criando o objeto da classe conteúdo
+            int idConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getFkConteudoDesempenhoConteudo()));
+            String nomeConteudo = cursor.getString(cursor.getColumnIndex(Conexao.getNomeConteudo()));
+            int tipoConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getTipoConteudo()));
+
+            Conteudo meuConteudo = new Conteudo(idConteudo, nomeConteudo, tipoConteudo);
+
+            DesempenhoConteudo meuDesempenhoConteudoFiltro = new DesempenhoConteudo(idDesempenhoConteudo, meuConteudo, quantidadePerguntas, quantidadeAcertos, quantidadeErros, pontuacaoConteudo, nivel);
+            this.bancoDados.close();
+
+            listaDesempenhosFiltro.add(meuDesempenhoConteudoFiltro);
+        }
+        cursor.close();
+        return listaDesempenhosFiltro;
     }
 
 

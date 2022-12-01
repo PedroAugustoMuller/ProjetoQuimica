@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainSplashScreenActivity extends AppCompatActivity{
+public class SplashScreenActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class MainSplashScreenActivity extends AppCompatActivity{
         handle.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent itMenu = new Intent(MainSplashScreenActivity.this, MainLoginActivity.class);
+                Intent itMenu = new Intent(SplashScreenActivity.this, MainLoginActivity.class);
                 startActivity(itMenu);
                 finish();
             }

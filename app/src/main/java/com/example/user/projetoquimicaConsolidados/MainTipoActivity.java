@@ -18,7 +18,7 @@ public class MainTipoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_main_tipo);
 
         ivMenuLogo = (ImageView)findViewById(R.id.ivMenuLogo);
         bMenuOrganica = findViewById(R.id.bMenuOrganica);

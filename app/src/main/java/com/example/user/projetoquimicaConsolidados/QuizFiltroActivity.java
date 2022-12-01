@@ -34,7 +34,7 @@ public class QuizFiltroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filtro);
+        setContentView(R.layout.activity_quiz_filtro);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

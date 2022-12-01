@@ -26,7 +26,7 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visualiza_upgrade);
+        setContentView(R.layout.activity_visualiza_percurso);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tvVisualizaTitulo = findViewById(R.id.tvVisualizaTitulo);

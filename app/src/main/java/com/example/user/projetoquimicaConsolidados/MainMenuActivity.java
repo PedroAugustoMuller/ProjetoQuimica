@@ -18,7 +18,7 @@ public class MainMenuActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+        setContentView(R.layout.activity_main_menu);
 
         ibResumos = findViewById(R.id.ibResumos);
         ibTabela = findViewById(R.id.ibTabela);

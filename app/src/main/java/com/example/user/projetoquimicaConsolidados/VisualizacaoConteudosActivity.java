@@ -25,7 +25,7 @@ public class VisualizacaoConteudosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_conteudos);
+        setContentView(R.layout.activity_visualizacao_conteudos);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -54,7 +54,9 @@ public class Conexao extends SQLiteOpenHelper {
     private static final String QUANTIDADE_ACERTOS = "quantidadeAcertos";
     private static final String QUANTIDADE_ERROS = "quantidadeErros";
     private static final String PONTUACAO_CONTEUDO = "pontuacao";
+    private static final String NIVEL_CONTEUDO_ENUM = "nivelConteudoEnum";
     private static final String FK_DESEMPENHO_QUESTIONARIO = "fk_idDesempenhoQuestionario";
+
 
     //TABELA DESEMPENHO QUESTIONÁRIO
     private static final String TABELA_DESEMPENHO_QUESTIONARIO = "DesempenhoQuestionario";
@@ -207,6 +209,7 @@ public class Conexao extends SQLiteOpenHelper {
                 QUANTIDADE_ACERTOS+" INTEGER,"+
                 QUANTIDADE_ERROS+" INTEGER,"+
                 PONTUACAO_CONTEUDO+" FLOAT,"+
+                NIVEL_CONTEUDO_ENUM+" INTEGER,"+
                 FK_CONTEUDO_DESEMPENHO_CONTEUDO+" INTEGER,"+
                 FK_DESEMPENHO_QUESTIONARIO+" INTEGER,"+
                 " FOREIGN KEY ("+FK_CONTEUDO_DESEMPENHO_CONTEUDO+") REFERENCES " + TABELA_CONTEUDO + "("+_ID_CONTEUDO + "), "+
@@ -550,5 +553,9 @@ public class Conexao extends SQLiteOpenHelper {
 
     public static String getVIDAS() {
         return VIDAS;
+    }
+
+    public static String getNivelConteudoEnum() {
+        return NIVEL_CONTEUDO_ENUM;
     }
 }

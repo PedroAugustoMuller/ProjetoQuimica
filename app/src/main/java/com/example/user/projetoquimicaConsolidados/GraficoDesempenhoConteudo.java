@@ -49,10 +49,13 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         Intent it = getIntent(); //pegando o conteudo selecionado na activity VisualizacaoConteudosActivity
         conteudo = (Conteudo)it.getSerializableExtra("conteudo"); //atribuindo ao conteudo
 
+        LineDataSet lineDataSet = new LineDataSet(carregaLineChartSemFiltro(),"teste");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
 
-
-
-
+        LineData data = new LineData(dataSets);
+        linechartDesempenhoConteudo.setData(data);
+        linechartDesempenhoConteudo.invalidate();
 
         rgSelecionaNivelConteudo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -68,7 +71,6 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         });
 
     }
-
 
     private ArrayList<Entry> carregaLineChartSemFiltro(){
         ArrayList<Entry> listaEntradas = new ArrayList<Entry>();
@@ -87,7 +89,7 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
     }
 
     private ArrayList<Entry> carregaLineChartFiltro(){
-
+        ArrayList<Entry> listaEntradas = new ArrayList<>();
         NivelConteudoEnum opcao = null;
         if(rbGraficoNivelConteudoCobre.isChecked()){
             opcao = nivelConteudoEnum.COBRE;
@@ -100,19 +102,16 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         }else if(rbGraficoNivelConteudoDiamante.isChecked()){
             opcao = nivelConteudoEnum.DIAMANTE;
         }
-
-        ArrayList<Entry> listaEntradas = new ArrayList<>();
         Log.d("Teste", "" + opcao.getValor());
         ArrayList<DesempenhoConteudo> listaDesempenhoConteudoFiltro = desempenhoConteudoDB.buscaDesempenhoConteudoFiltro(conteudo, opcao.getValor());
 
         float cont=0;
         for(int x =0; x < listaDesempenhoConteudoFiltro.size(); x++){
 
-            if(conteudo.getIdConteudo() == listaDesempenhoConteudoFiltro.get(x).getConteudo().getIdConteudo() && opcao == listaDesempenhoConteudoFiltro.get(x).getNivelConteudoEnum()){
                 DesempenhoConteudo desempenhoConteudo = listaDesempenhoConteudoFiltro.get(x);
                 listaEntradas.add(new Entry(cont, desempenhoConteudo.getPontuacaoConteudo()));
                 cont++;
-            }
+
         }
         return listaEntradas;
     }

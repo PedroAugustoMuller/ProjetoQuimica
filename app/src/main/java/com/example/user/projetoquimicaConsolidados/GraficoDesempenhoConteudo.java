@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -36,6 +37,7 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         informacoesApp = (InformacoesApp) getApplicationContext();
+        rgSelecionaNivelConteudo = findViewById(R.id.rgSelecionaNivelConteudo);
         rbGraficoNivelConteudoCobre = findViewById(R.id.rbGraficoNivelConteudoCobre);
         rbGraficoNivelConteudoBronze = findViewById(R.id.rbGraficoNivelConteudoBronze);
         rbGraficoNivelConteudoPrata = findViewById(R.id.rbGraficoNivelConteudoPrata);
@@ -100,6 +102,7 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         }
 
         ArrayList<Entry> listaEntradas = new ArrayList<>();
+        Log.d("Teste", "" + opcao.getValor());
         ArrayList<DesempenhoConteudo> listaDesempenhoConteudoFiltro = desempenhoConteudoDB.buscaDesempenhoConteudoFiltro(conteudo, opcao.getValor());
 
         float cont=0;

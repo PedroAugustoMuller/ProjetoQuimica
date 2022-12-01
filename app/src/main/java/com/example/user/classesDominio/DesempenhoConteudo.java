@@ -101,4 +101,17 @@ public class DesempenhoConteudo implements Serializable {
     public void setPontuacaoConteudo(float pontuacaoConteudo) {
         this.pontuacaoConteudo = pontuacaoConteudo;
     }
+
+    @Override
+    public String toString() {
+        return "DesempenhoConteudo{" +
+                "idDesempenhoConteudo=" + idDesempenhoConteudo +
+                ", conteudo=" + conteudo +
+                ", quantidadePerguntas=" + quantidadePerguntas +
+                ", quantidadeAcertos=" + quantidadeAcertos +
+                ", quantidadeErros=" + quantidadeErros +
+                ", pontuacaoConteudo=" + pontuacaoConteudo +
+                ", nivelConteudoEnum=" + nivelConteudoEnum +
+                '}';
+    }
 }

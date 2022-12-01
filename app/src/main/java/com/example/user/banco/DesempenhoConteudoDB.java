@@ -43,6 +43,7 @@ public class DesempenhoConteudoDB {
             valores.put(Conexao.getQuantidadeErros(), meuDesempenhoConteudo.getQuantidadeErros());
             valores.put(Conexao.getPontuacaoConteudo(), meuDesempenhoConteudo.getPontuacaoConteudo());
             valores.put(Conexao.getFkDesempenhoQuestionario(), idDesempenhoQuestionario);
+            valores.put(Conexao.getNivelConteudoEnum(), meuDesempenhoConteudo.getNivelConteudoEnum().getValor());
 
             resultado = this.bancoDados.insert(Conexao.getTabelaDesempenhoConteudo(), null, valores);
 
@@ -71,6 +72,7 @@ public class DesempenhoConteudoDB {
         valores.put(Conexao.getQuantidadeAcertos(), meuDesempenhoConteudo.getQuantidadeAcertos());
         valores.put(Conexao.getQuantidadeErros(), meuDesempenhoConteudo.getQuantidadeErros());
         valores.put(Conexao.getPontuacaoConteudo(), meuDesempenhoConteudo.getPontuacaoConteudo());
+        valores.put(Conexao.getNivelConteudoEnum(), meuDesempenhoConteudo.getNivelConteudoEnum().getValor());
 
         resultado = this.bancoDados.insert(Conexao.getTabelaDesempenhoConteudo(),null,valores);
 

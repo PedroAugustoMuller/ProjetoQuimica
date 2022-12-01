@@ -119,7 +119,7 @@ public class DesempenhoConteudoDB {
         Log.d("Teste", "Entrei na funcao");
 
         String where = Conexao.getTabelaDesempenhoConteudo() + " INNER JOIN " + Conexao.getTabelaConteudo() + " WHERE " +
-                Conexao.getIdConteudo() + " = " + Conexao.getFkConteudoDesempenhoConteudo();
+                conteudo.getIdConteudo() + " = " + Conexao.getFkConteudoDesempenhoConteudo();
 
 
         this.bancoDados = this.conexao.getWritableDatabase();
@@ -130,6 +130,8 @@ public class DesempenhoConteudoDB {
             Log.d("Teste","Entrei no cursor");
             DesempenhoConteudo meuDesempenhoConteudoFiltro = null;
             int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNivelConteudoEnum()));
+            Log.d("Teste","" + nivelConteudo);
+            Log.d("Teste","" + nivelBanco);
             if (nivelBanco == nivelConteudo){
                 Log.d("Teste", "Entrei no IF da consulta com filtro");
                 int idDesempenhoConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdDesempenhoConteudo()));
@@ -160,7 +162,6 @@ public class DesempenhoConteudoDB {
                 Conteudo meuConteudo = new Conteudo(idConteudo, nomeConteudo, tipoConteudo);
 
                 meuDesempenhoConteudoFiltro = new DesempenhoConteudo(idDesempenhoConteudo, meuConteudo, quantidadePerguntas, quantidadeAcertos, quantidadeErros, pontuacaoConteudo, nivel);
-                System.out.println(meuDesempenhoConteudoFiltro.toString());
             }
 
             this.bancoDados.close();

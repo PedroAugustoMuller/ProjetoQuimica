@@ -109,6 +109,7 @@ public class DesempenhoConteudoDB {
             Conteudo meuConteudo = new Conteudo(idConteudo, nomeConteudo, tipoConteudo);
 
             DesempenhoConteudo meuDesempenhoConteudo = new DesempenhoConteudo(idDesempenhoConteudo, meuConteudo, quantidadePerguntas, quantidadeAcertos, quantidadeErros, pontuacaoConteudo);
+
             this.bancoDados.close();
 
             listaDesempenhos.add(meuDesempenhoConteudo);
@@ -121,7 +122,7 @@ public class DesempenhoConteudoDB {
         Log.d("Teste", "Entrei na funcao");
 
         String where = Conexao.getTabelaDesempenhoConteudo() + " INNER JOIN " + Conexao.getTabelaConteudo() + " WHERE " +
-                conteudo.getIdConteudo() + " = " + Conexao.getFkConteudoDesempenhoConteudo();
+                conteudo.getIdConteudo() + " = " + Conexao.getFkConteudoDesempenhoConteudo() + " AND " + nivelConteudo + " = " + Conexao.getNivelConteudoEnum();
 
 
         this.bancoDados = this.conexao.getWritableDatabase();
@@ -131,17 +132,18 @@ public class DesempenhoConteudoDB {
         while (cursor.moveToNext()) {
             Log.d("Teste","Entrei no cursor");
             DesempenhoConteudo meuDesempenhoConteudoFiltro = null;
-            int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNivelConteudoEnum()));
-            Log.d("Teste","" + nivelConteudo);
-            Log.d("Teste","" + nivelBanco);
-            if (nivelBanco == nivelConteudo){
+
+
                 Log.d("Teste", "Entrei no IF da consulta com filtro");
                 int idDesempenhoConteudo = cursor.getInt(cursor.getColumnIndex(Conexao.getIdDesempenhoConteudo()));
                 int quantidadePerguntas = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadePerguntas()));
                 int quantidadeAcertos = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadeAcertos()));
                 int quantidadeErros = cursor.getInt(cursor.getColumnIndex(Conexao.getQuantidadeErros()));
                 float pontuacaoConteudo = cursor.getFloat(cursor.getColumnIndex(Conexao.getPontuacaoConteudo()));
+                int nivelBanco = cursor.getInt(cursor.getColumnIndex(Conexao.getNivelConteudoEnum()));
 
+                Log.d("Teste","" + nivelConteudo);
+                Log.d("Teste","" + nivelBanco);
 
                 NivelConteudoEnum nivel = null;
                 if (nivelBanco == 1) {
@@ -164,7 +166,8 @@ public class DesempenhoConteudoDB {
                 Conteudo meuConteudo = new Conteudo(idConteudo, nomeConteudo, tipoConteudo);
 
                 meuDesempenhoConteudoFiltro = new DesempenhoConteudo(idDesempenhoConteudo, meuConteudo, quantidadePerguntas, quantidadeAcertos, quantidadeErros, pontuacaoConteudo, nivel);
-            }
+                System.out.println(meuDesempenhoConteudoFiltro.toString());
+
 
             this.bancoDados.close();
 

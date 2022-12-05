@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -57,16 +58,19 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         linechartDesempenhoConteudo.setData(data);
         linechartDesempenhoConteudo.invalidate();
 
+
         rgSelecionaNivelConteudo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                LineDataSet lineDataSet = new LineDataSet(carregaLineChartFiltro(),"teste");
-                ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                dataSets.add(lineDataSet);
 
-                LineData data = new LineData(dataSets);
-                linechartDesempenhoConteudo.setData(data);
-                linechartDesempenhoConteudo.invalidate();
+                    LineDataSet lineDataSet = new LineDataSet(carregaLineChartFiltro(),"teste");
+                    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                    dataSets.add(lineDataSet);
+
+                    LineData data = new LineData(dataSets);
+                    linechartDesempenhoConteudo.setData(data);
+                    linechartDesempenhoConteudo.invalidate();
+
             }
         });
 

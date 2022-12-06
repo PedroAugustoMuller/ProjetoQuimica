@@ -8,6 +8,7 @@ import com.example.user.banco.DesempenhoQuestionarioDB;
 import com.example.user.banco.InformacoesApp;
 import com.example.user.classesDominio.DesempenhoQuestionario;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -15,6 +16,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class GraficoDezQuestionariosActivity extends AppCompatActivity {
 
@@ -51,7 +54,7 @@ public class GraficoDezQuestionariosActivity extends AppCompatActivity {
 
         float cont = 0;
         System.out.println(listaDesempenhoQuestionario.size());
-        for (int x = listaDesempenhoQuestionario.size(); x >= (listaDesempenhoQuestionario.size()-9); x--){
+        for (int x = listaDesempenhoQuestionario.size(); x >= (listaDesempenhoQuestionario.size()-4); x--){
             DesempenhoQuestionario meuDesempenhoQuestionario = listaDesempenhoQuestionario.get(x-1);
 
             System.out.println(meuDesempenhoQuestionario.getPontuacaoFinal());
@@ -69,6 +72,18 @@ public class GraficoDezQuestionariosActivity extends AppCompatActivity {
         LineData data = new LineData(dataSets);
         lcGraficoDezQuestionariosLinha.setData(data);
         lcGraficoDezQuestionariosLinha.invalidate();
+        lcGraficoDezQuestionariosLinha.setScaleEnabled(false);
+        lcGraficoDezQuestionariosLinha.getLegend().setEnabled(false);
+        lcGraficoDezQuestionariosLinha.getDescription().setEnabled(false);
+        XAxis xAxis = lcGraficoDezQuestionariosLinha.getXAxis();
+        YAxis left = lcGraficoDezQuestionariosLinha.getAxisLeft();
+        lcGraficoDezQuestionariosLinha.getAxisRight().setEnabled(false);
+        //XAxis
+        xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        left.setDrawZeroLine(true);
+        //YAxis
+        left.setGranularity(1f);
 
 
 

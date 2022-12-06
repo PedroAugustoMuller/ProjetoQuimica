@@ -79,6 +79,7 @@ public class QuizRelatorioActivity extends AppCompatActivity {
         dadosTorta.setValueTextSize(12f);
         pcRelatorioResultados.animateXY(2000,2000);
         pcRelatorioResultados.getDescription().setEnabled(false);
+        pcRelatorioResultados.setRotationEnabled(false);
     }
 
     RelatorioPerguntaAdapter.PerguntaOnClickListener trataCliqueItem = new RelatorioPerguntaAdapter.PerguntaOnClickListener() {

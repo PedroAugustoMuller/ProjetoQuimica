@@ -15,6 +15,25 @@
         android:layout_weight="1"
         android:id="@+id/linechartDesempenhoConteudo"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filtro:"
+        android:layout_margin="5dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/rgGraficoConteudoTodos">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="todos"
+            android:id="@+id/rbGraficoNivelConteudoTodos"
+            android:layout_margin="5dp"/>
+    </RadioGroup>
+
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,28 +43,33 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="COBRE"
-            android:id="@+id/rbGraficoNivelConteudoCobre"/>
+            android:id="@+id/rbGraficoNivelConteudoCobre"
+            android:button="@drawable/ic_cobre"
+            android:layout_margin="5dp"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BRONZE"
-            android:id="@+id/rbGraficoNivelConteudoBronze"/>
+            android:id="@+id/rbGraficoNivelConteudoBronze"
+            android:button="@drawable/ic_bronze"
+            android:layout_margin="5dp"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PRATA"
-            android:id="@+id/rbGraficoNivelConteudoPrata"/>
+            android:id="@+id/rbGraficoNivelConteudoPrata"
+            android:button="@drawable/ic_prata"
+            android:layout_margin="5dp"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OURO"
-            android:id="@+id/rbGraficoNivelConteudoOuro"/>
+            android:id="@+id/rbGraficoNivelConteudoOuro"
+            android:button="@drawable/ic_ouro"
+            android:layout_margin="5dp"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DIAMANTE"
-            android:id="@+id/rbGraficoNivelConteudoDiamante"/>
+            android:id="@+id/rbGraficoNivelConteudoDiamante"
+            android:button="@drawable/ic_diamante"
+            android:layout_margin="5dp"/>
     </RadioGroup>
 
 

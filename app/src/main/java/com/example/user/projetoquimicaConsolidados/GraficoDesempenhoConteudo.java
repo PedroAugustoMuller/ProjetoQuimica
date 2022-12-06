@@ -1,6 +1,7 @@
 package com.example.user.projetoquimicaConsolidados;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,10 +16,14 @@ import com.example.user.classesDominio.Conteudo;
 import com.example.user.classesDominio.DesempenhoConteudo;
 import com.example.user.componente.NivelConteudoEnum;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -49,24 +54,47 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         Intent it = getIntent(); //pegando o conteudo selecionado na activity VisualizacaoConteudosActivity
         conteudo = (Conteudo)it.getSerializableExtra("conteudo"); //atribuindo ao conteudo
 
-        LineDataSet lineDataSet = new LineDataSet(carregaLineChartSemFiltro(),"teste");
+        LineDataSet lineDataSet = new LineDataSet(carregaLineChartSemFiltro(),conteudo.getNomeConteudo());
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(lineDataSet);
+        lineDataSet.setColor(Color.GREEN);
+        lineDataSet.setLineWidth(4f);
+        lineDataSet.setValueTextSize(15f);
 
+        XAxis xAxis = linechartDesempenhoConteudo.getXAxis();
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1);
+        dataSets.add(lineDataSet);
         LineData data = new LineData(dataSets);
         linechartDesempenhoConteudo.setData(data);
         linechartDesempenhoConteudo.invalidate();
+        linechartDesempenhoConteudo.animateY(1200);
+        linechartDesempenhoConteudo.setDragEnabled(true);
+        linechartDesempenhoConteudo.setDrawGridBackground(false);
+
+        //ideia
+        //LimitLine upper_limit = new LimitLine(65,"Bom");
+
 
         rgSelecionaNivelConteudo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                LineDataSet lineDataSet = new LineDataSet(carregaLineChartFiltro(),"teste");
+                LineDataSet lineDataSet = new LineDataSet(carregaLineChartFiltro(),conteudo.getNomeConteudo());
                 ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                dataSets.add(lineDataSet);
+                lineDataSet.setColor(Color.GREEN);
+                lineDataSet.setLineWidth(4f);
+                lineDataSet.setValueTextSize(15f);
 
+                XAxis xAxis = linechartDesempenhoConteudo.getXAxis();
+                xAxis.setDrawGridLines(false);
+                xAxis.setGranularity(1);
+                dataSets.add(lineDataSet);
                 LineData data = new LineData(dataSets);
                 linechartDesempenhoConteudo.setData(data);
                 linechartDesempenhoConteudo.invalidate();
+                linechartDesempenhoConteudo.animateY(1200);
+                linechartDesempenhoConteudo.setDragEnabled(true);
+                linechartDesempenhoConteudo.setDrawGridBackground(false);
+
             }
         });
 
@@ -76,7 +104,7 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         ArrayList<Entry> listaEntradas = new ArrayList<Entry>();
         ArrayList<DesempenhoConteudo> listaDesempenhoConteudo = desempenhoConteudoDB.buscaDesempenhoConteudo();
 
-        float cont=0;
+        float cont=1;
         for(int x = 0; x < listaDesempenhoConteudo.size(); x++){
 
             if(conteudo.getIdConteudo() == listaDesempenhoConteudo.get(x).getConteudo().getIdConteudo()){
@@ -93,19 +121,24 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         NivelConteudoEnum opcao = null;
         if(rbGraficoNivelConteudoCobre.isChecked()){
             opcao = nivelConteudoEnum.COBRE;
+
         }else if(rbGraficoNivelConteudoBronze.isChecked()){
             opcao = nivelConteudoEnum.BRONZE;
+
         }else if(rbGraficoNivelConteudoPrata.isChecked()){
             opcao = nivelConteudoEnum.PRATA;
+
         }else if(rbGraficoNivelConteudoOuro.isChecked()){
             opcao = nivelConteudoEnum.OURO;
+
         }else if(rbGraficoNivelConteudoDiamante.isChecked()){
             opcao = nivelConteudoEnum.DIAMANTE;
+
         }
         Log.d("Teste", "" + opcao.getValor());
         ArrayList<DesempenhoConteudo> listaDesempenhoConteudoFiltro = desempenhoConteudoDB.buscaDesempenhoConteudoFiltro(conteudo, opcao.getValor());
 
-        float cont=0;
+        float cont=1;
         for(int x =0; x < listaDesempenhoConteudoFiltro.size(); x++){
 
                 DesempenhoConteudo desempenhoConteudo = listaDesempenhoConteudoFiltro.get(x);

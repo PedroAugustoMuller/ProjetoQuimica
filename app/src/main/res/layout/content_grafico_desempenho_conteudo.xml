@@ -10,16 +10,17 @@
     tools:showIn="@layout/activity_grafico_desempenho_conteudo">
 
     <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/linechartDesempenhoConteudo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/linechartDesempenhoConteudo"/>
+        android:layout_height="496dp"
+        android:layout_weight="1" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Filtro:"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:textSize="20dp"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -33,6 +34,13 @@
             android:id="@+id/rbGraficoNivelConteudoTodos"
             android:layout_margin="5dp"/>
     </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nível do conteúdo"
+        android:layout_margin="5dp"
+        android:textSize="20dp"/>
 
     <RadioGroup
         android:layout_width="wrap_content"

@@ -26,7 +26,7 @@ public class ListaConteudosAdapter extends RecyclerView.Adapter<ListaConteudosAd
     @Override
     public ListaConteudosAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list_row, parent, false);
+                .inflate(R.layout.item_list_row_conteudos, parent, false);
 
         return new ListaConteudosAdapter.MyViewHolder(itemView);
     }
@@ -34,7 +34,7 @@ public class ListaConteudosAdapter extends RecyclerView.Adapter<ListaConteudosAd
     @Override
     public void onBindViewHolder(final ListaConteudosAdapter.MyViewHolder holder, final int position) {
         Conteudo cont = lstConteudos.get(position);
-        holder.tvNomeConteudo.setText(cont.getNomeConteudo());
+        holder.tvItemListRowConteudosNomeConteudo.setText(cont.getNomeConteudo());
         /* CUIDADO: .setText() precisa sempre de String. Se for outro tipo de dado, deve ser feita a conversão com o String.valueOf() */
 
         // clique no item do cliente
@@ -56,11 +56,11 @@ public class ListaConteudosAdapter extends RecyclerView.Adapter<ListaConteudosAd
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNomeConteudo;
+        TextView tvItemListRowConteudosNomeConteudo;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tvNomeConteudo = (TextView) itemView.findViewById(R.id.tvNomeConteudo);
+            tvItemListRowConteudosNomeConteudo = (TextView) itemView.findViewById(R.id.tvItemListRowConteudosNomeConteudo);
         }
     }
 

@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00CCB6</color>
-    <color name="colorPrimaryDark">#00CCB6</color>
+    <!--    <color name="colorPrimary">#00CCB6</color>-->
+    <!--    <color name="colorPrimaryDark">#00CCB6</color>-->
     <color name="colorAccent">#D81B60</color>
     <color name="fundo">#00CCB6</color>
     <color name="fundo2">#F4F3ED</color>
+    <!--    Paleta que o Pedro criou   -->
+    <!--    Cores Primárias     -->
+    <color name="colorPrimary">#00CCB6</color>
+    <color name="colorPrimaryDark">#009a86</color>
+    <color name="colorPrimaryLight">#61ffe8</color>
+    <!--    Cores Secundárias    -->
+    <color name="corSecundariaRoxo">#8c76a6</color>
+    <color name="corSecundariaRoxoEscuro">#5e4a77</color>
+    <color name="corSecundariaRoxoClaro">#bda5d8</color>
+<!--    Azul-->
+    <color name="corSecundariaAzul">#29384c</color>
+    <color name="corSecundariaAzulEscuro">#001224</color>
+    <color name="corSecundariaAzulClaro">#536278</color>
+<!--    Cinza-->
+    <color name="corSecundariaCinza">#f4f3ed</color>
+    <color name="corSecundariaCinzaEscuro">#c1c0bb</color>
+    <color name="corSecundariaCinzaClaro">#ffffff</color>
+<!--    Vermelho-->
+    <color name="corSecundariaVermelho">#d93732</color>
+    <color name="corSecundariaVermelhoEscuro">#a0000a</color>
+    <color name="corSecundariaVermelhoClaro">#ff6c5c</color>
+    <!--    Textos    -->
+    <color name="corSecundariaTextoClaro">#ffffff</color>
+    <color name="corSecundariaTextoEscuro">#000000</color>
 </resources>

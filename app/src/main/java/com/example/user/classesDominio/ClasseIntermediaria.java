@@ -100,10 +100,12 @@ public class ClasseIntermediaria {
                quantidadePerguntasPorConteudo[indice][3] = 1;
            }
             /*float percentualAuxiliar;*/
-            if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) { //PEDRO - o problema com as notas acontece pois estamos dividindo int por int
+            if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
+//                float percentualFaceis = (quantidadePerguntasPorConteudo[indice][1] / quantidadePerguntasPorConteudo[indice][0])*100;
                 valorFaceis = 68f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 32f / quantidadePerguntasPorConteudo[indice][2];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.BRONZE) {
+                //CADA QUESTÃO DIFÍCIL VALIA 20 PONTOS ANTES
                 valorFaceis = 45f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 35f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 20f / quantidadePerguntasPorConteudo[indice][3];
@@ -112,12 +114,13 @@ public class ClasseIntermediaria {
                 valorMedias = 40f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 30f / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.OURO) {
-                valorFaceis = 20f / quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 35f / quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 45f / quantidadePerguntasPorConteudo[indice][3];
+                //CADA QUESTÂO FÁCIL VALIA 20 PONTOS ANTES
+                valorFaceis = 5f / quantidadePerguntasPorConteudo[indice][1];
+                valorMedias = 45f / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 50f / quantidadePerguntasPorConteudo[indice][3];
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.DIAMANTE) {
-                valorMedias =  32f  / quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 68f / quantidadePerguntasPorConteudo[indice][3];
+                valorMedias =  30f  / quantidadePerguntasPorConteudo[indice][2];
+                valorDificeis = 70f / quantidadePerguntasPorConteudo[indice][3];
             }
             Log.d("Teste", "Percentual valor fáceis: " + valorFaceis + ", percentual médias: " + valorMedias + ", percentual díficeis: " + valorDificeis);
             float pontuacaoConteudo = 0; //PEDRO - Talvez mudar para double
@@ -146,7 +149,6 @@ public class ClasseIntermediaria {
                     erros++;
                 }
 
-                float media = 0;
                 /*TESTE*/
                 /*if(meuConteudo.getQuantidade() == 0){
                     meuConteudo.setQuantidade(1);

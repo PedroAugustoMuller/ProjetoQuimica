@@ -58,6 +58,7 @@ public class DesempenhoConteudoDB {
         return retornoDesempenhoConteudo;
     }
 
+    //QUANDO QUE USARÍAMOS ISSO  ? - PEDRO
     public String insereDesempenhoConteudo(DesempenhoConteudo meuDesempenhoConteudo){
         String retornoDesempenhoConteudo = "";
         long resultado;
@@ -86,7 +87,7 @@ public class DesempenhoConteudoDB {
         return retornoDesempenhoConteudo;
     }
 
-
+    //TALVEZ BUSCAR NÍVEL CONTEUDO ENUM AQUI TAMBÉM - PEDRO
     public ArrayList<DesempenhoConteudo> buscaDesempenhoConteudo() {
         ArrayList<DesempenhoConteudo> listaDesempenhos = new ArrayList<>();
         String where = Conexao.getTabelaDesempenhoConteudo() +" INNER JOIN "+ Conexao.getTabelaConteudo(); //INNER JOIN AQUI ULTRA NECESSÁRIO

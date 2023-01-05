@@ -27,7 +27,7 @@ public class DesempenhoQuestionario implements Serializable {
         this.listaDesempenhoConteudos = listaDesempenhoConteudos;
         this.meuUsuario = meuUsuario;
     }
-
+    //ACREDITO QUE ESSE CONSTRUTOR NÃO PRECISARIA EXISTIR - PEDRO
     public DesempenhoQuestionario(Date data, float pontuacaoFinal, ArrayList<DesempenhoConteudo> listaDesempenhoConteudos) {
         this.data = data;
         this.pontuacaoFinal = pontuacaoFinal;

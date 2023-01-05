@@ -37,7 +37,7 @@ public class Pergunta implements Serializable {
         this.questaoVestibular = questaoVestibular;
     }
 
-    // Construtor 2 - sem id e alternativa correta
+    // Construtor 2 - sem id e opcao escolhida
     public Pergunta(String enunciado, String opcaoA, String opcaoB, String opcaoC, String opcaoD, String opcaoE, byte[] imagem, int testePrevio, Conteudo conteudo, char alternativaCorreta, int nivelDificuldade, int questaoVestibular) {
         this.enunciado = enunciado;
         this.opcaoA = opcaoA;

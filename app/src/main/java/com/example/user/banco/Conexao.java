@@ -43,7 +43,9 @@ public class Conexao extends SQLiteOpenHelper {
     private static final String _ID_CONTEUDO = "_idConteudo";
     private static final String NOME_CONTEUDO = "nome";
     private static final String TIPO_CONTEUDO = "tipo";
+    //PARA QUE SERVE A QUANTIDADE ? - PEDRO
     private static final String QUANTIDADE = "quantidade";
+    //PARA QUE SERVE A PRECISAO ? - PEDRO
     private static final String PRECISAO = "precisao";
 
     //TABELA DESEMPENHO CONTEÚDO
@@ -54,6 +56,7 @@ public class Conexao extends SQLiteOpenHelper {
     private static final String QUANTIDADE_ACERTOS = "quantidadeAcertos";
     private static final String QUANTIDADE_ERROS = "quantidadeErros";
     private static final String PONTUACAO_CONTEUDO = "pontuacao";
+    //MUDAR O NOME DESSA DE BAIXO - PEDRO
     private static final String NIVEL_CONTEUDO_ENUM = "nivelConteudoEnum";
     private static final String FK_DESEMPENHO_QUESTIONARIO = "fk_idDesempenhoQuestionario";
 

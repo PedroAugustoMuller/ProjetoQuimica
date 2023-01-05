@@ -43,7 +43,7 @@ public class ConteudoDB {
         return retornoConteudo;
     }
 
-
+    //REVISAR NA REUNIÃO - PEDRO
     public Conteudo buscaUMConteudo(String nomeConteudo){
         //QUANDO F0RMOS FAZER PRA VALER USAR UMA ACTIVITY EM QUE MOSTRE NA CAIXINHA AS OPÇOES DE CONTEUDO E AI JA ROLA
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -82,7 +82,7 @@ public class ConteudoDB {
         return listaConteudos;
     }
 
-
+    //NÃO TA BUSCANDO CONTEÚDOS ALEATÓRIOS E SIM TODOS OS CONTEÚDOS - PEDRO
     public ArrayList<Conteudo> buscaConteudosAleatorios(int quantidade, int tipoConteudo) {
         ArrayList<Conteudo> listaConteudos = new ArrayList<>();
         String where = Conexao.getTipoConteudo() + "=" + tipoConteudo;

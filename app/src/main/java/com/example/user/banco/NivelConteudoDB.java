@@ -68,6 +68,8 @@ public class NivelConteudoDB {
         return listaNiveisConteudos;
     }
 
+    //JUNTAR OS DOIS BUSCACONTEUDO EM UM SÓ TALVEZ? - PEDRO
+
     public ArrayList<NivelConteudo> buscaConteudosComNivel(ArrayList<Conteudo> listaConteudos, Usuario meuUsuario) {
         ArrayList<NivelConteudo> listaNiveisConteudos = new ArrayList<>();
 
@@ -149,6 +151,8 @@ public class NivelConteudoDB {
         return meuNivelConteudo;
     }
 
+
+    //JUNTAR OS DOIS INCREMENTANIVEL EM UM SÓ TALVEZ? - PEDRO
     public void incrementaNivel(NivelConteudo meuNivelConteudo, Usuario meuUsuario){
         ContentValues valores;
         valores = new ContentValues();
@@ -189,6 +193,8 @@ public class NivelConteudoDB {
         }
     }
 
+    //JUNTAR OS DECAI NIVEL EM UM SÓ TALVEZ? - PEDRO
+
     public void decaiUmNivel (NivelConteudo meuNivelConteudo, Usuario meuUsuario){
         ContentValues valores = new ContentValues();
         String where;
@@ -226,6 +232,8 @@ public class NivelConteudoDB {
             decaiUmNivel(meuNivelConteudo, meuUsuario);
         }
     }
+
+    //JUNTAR TODOS OS ALTERA EM UMA FUNÇÃO SÒ? - PEDRO
 
     public String alteraNivel(NivelConteudo meuNivelConteudo) {
         Log.d("Teste","Entrei no alteraNivel em NivelConteudoDB!");
@@ -363,6 +371,8 @@ public class NivelConteudoDB {
         }
     }
 
+
+    //APAGAR ISSO OU TORNAR FUNCIONAL - PEDRO
     /*public Image carregaImagemNivel(){
         Image imagem;
         String where = Conexao.getImagemNivel();

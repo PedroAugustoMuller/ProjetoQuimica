@@ -54,7 +54,7 @@ public class PerguntaDB {
         return retornoPergunta;
     }
 
-
+    //PARA QUE USARÍAMOS ESSA FUNÇÃO? - PEDRO
     public ArrayList<Pergunta> buscaPerguntasPorConteudos(ArrayList<Conteudo> listaConteudos, int quantidade) {
         ArrayList<Pergunta> listaPerguntas = new ArrayList<>();
 
@@ -174,7 +174,7 @@ public class PerguntaDB {
 
     }
 
-
+    //PARA QUE USARÍAMOS ESSA FUNÇÃO? Basicamente repete a função buscaPerguntasPorConteudo - PEDRO
     //apenas para teste - depois devera receber o objeto da classe conteudo
     public ArrayList<Pergunta> buscaPerguntasPorConteudo(Conteudo meuConteudo, int quantidade) {
         ArrayList<Pergunta> listaPerguntas = new ArrayList<>();
@@ -210,7 +210,7 @@ public class PerguntaDB {
         return listaPerguntas;
     }
 
-
+    //TALVEZ MUDAR O NOME DA FUNÇÃO - PEDRO
     public ArrayList<Pergunta> buscaPergunta() {
 
         ArrayList<Pergunta> listaPerguntas = new ArrayList<>();
@@ -248,7 +248,7 @@ public class PerguntaDB {
         return listaPerguntas;
     }
 
-
+    //PARA QUE USARíAMOS ESSA FUNÇÃO? - PEDRO
     public Pergunta carregaPerguntaById(int id){
         Cursor cursor;
         Pergunta minhaPergunta = null;

@@ -72,7 +72,7 @@ public class UsuarioDB {
         return meuUsuario;
     }
 
-
+    //CRIAR UMA TELA PARA USAR ESSA FUNÇÃO? - PEDRO
     public void alteraUsuario(Usuario meuUsuario){
         ContentValues valores;
         String where;
@@ -93,7 +93,7 @@ public class UsuarioDB {
         this.bancoDados.close();
     }
 
-
+    //CRIAR UMA TELA PARA USAR ESSA FUNÇÃO? - PEDRO
     public void deletaUsuario(int idUsuario){
         String where = Conexao.getIdUsuario() + "=" + idUsuario;
         this.bancoDados = this.conexao.getReadableDatabase();

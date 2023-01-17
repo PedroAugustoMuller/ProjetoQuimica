@@ -72,11 +72,14 @@ public class GraficoNiveisPorConteudoActivity extends AppCompatActivity {
         bcGraficoNiveisPorConteudo.setScaleEnabled(false);
         bcGraficoNiveisPorConteudo.setHighlightPerDragEnabled(false);
         bcGraficoNiveisPorConteudo.getLegend().setEnabled(false);
+        bcGraficoNiveisPorConteudo.setExtraBottomOffset(10f);
+        bcGraficoNiveisPorConteudo.isDragEnabled();
         //YAxis
         XAxis xAxis = bcGraficoNiveisPorConteudo.getXAxis();
         YAxis left = bcGraficoNiveisPorConteudo.getAxisLeft();
         YAxis right = bcGraficoNiveisPorConteudo.getAxisRight();
         left.setGranularity(1f);
+        left.setTextSize(15f);
         left.setAxisMinimum(0);
         left.setAxisMaximum(5);
         left.setValueFormatter(new IndexAxisValueFormatter(yLabel));
@@ -86,6 +89,7 @@ public class GraficoNiveisPorConteudoActivity extends AppCompatActivity {
         right.setEnabled(false);
         //XAxis
         xAxis.setGranularity(1f);
+        xAxis.setTextSize(15f);
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(label));

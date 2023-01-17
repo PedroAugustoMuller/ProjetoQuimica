@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.user.banco.DesempenhoQuestionarioDB;
 import com.example.user.banco.InformacoesApp;
 import com.example.user.classesDominio.DesempenhoQuestionario;
+import com.example.user.componente.templates.TemplateDeCores;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -14,10 +15,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class GraficoDezQuestionariosActivity extends AppCompatActivity {
 
@@ -66,6 +66,10 @@ public class GraficoDezQuestionariosActivity extends AppCompatActivity {
         }
 
         LineDataSet setDesempenhoQuestionarios = new LineDataSet(listaEntradas, "Dez");
+        setDesempenhoQuestionarios.setLineWidth(4f);
+        setDesempenhoQuestionarios.setColor(TemplateDeCores.ColorPrimaryDark);
+        setDesempenhoQuestionarios.setValueTextSize(15f);
+        setDesempenhoQuestionarios.setValueTextColor(TemplateDeCores.ColorPrimaryDark);
         setDesempenhoQuestionarios.setAxisDependency(YAxis.AxisDependency.LEFT);
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(setDesempenhoQuestionarios);
@@ -78,13 +82,16 @@ public class GraficoDezQuestionariosActivity extends AppCompatActivity {
         XAxis xAxis = lcGraficoDezQuestionariosLinha.getXAxis();
         YAxis left = lcGraficoDezQuestionariosLinha.getAxisLeft();
         lcGraficoDezQuestionariosLinha.getAxisRight().setEnabled(false);
+        lcGraficoDezQuestionariosLinha.setExtraBottomOffset(5f);
         //XAxis
         xAxis.setGranularity(1f);
+        xAxis.setTextSize(15f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        left.setDrawZeroLine(true);
-        //YAxis
-        left.setGranularity(1f);
 
+        //YAxis
+        left.setGranularity(10f);
+        left.setDrawZeroLine(true);
+        left.setTextSize(15f);
 
 
 

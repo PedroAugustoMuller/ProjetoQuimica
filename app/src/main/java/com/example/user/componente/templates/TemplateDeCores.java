@@ -2,6 +2,7 @@ package com.example.user.componente.templates;
 
 import android.graphics.Color;
 
+
 public class TemplateDeCores {
 
     public static final int[] PALETA_NIVEIS ={
@@ -16,4 +17,8 @@ public class TemplateDeCores {
             //DIAMANTE
             Color.rgb(56,182,255)
     };
+
+    public static final int ColorPrimaryDark = Color.rgb(0, 154, 134);
+
+
 }

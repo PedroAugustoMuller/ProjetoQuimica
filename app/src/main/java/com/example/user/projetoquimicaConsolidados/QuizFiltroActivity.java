@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.banco.ConteudoDB;
@@ -21,8 +23,10 @@ import java.util.ArrayList;
 public class QuizFiltroActivity extends AppCompatActivity {
     ConteudoDB conteudoDB;
     Button bSalvar;
+    ImageView ivFiltroRemover, ivFiltroAdicionar, ivFiltroRemover10, ivFiltroAdicionar10;
+    TextView tvFiltroQuantidadePerguntas;
     RadioButton rbSelecionar, rbSortear;
-    EditText etQuantidadePerguntas, etQuantidadeConteudos;
+    EditText etQuantidadeConteudos;
     ArrayList<Conteudo> listaConteudos;
     ArrayList<Conteudo> listaConteudosSelecionados;
     MultiSelectionSpinner spMultiConteudos;
@@ -32,25 +36,24 @@ public class QuizFiltroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        int QuantidadePerguntas =1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_filtro);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
-        etQuantidadePerguntas = findViewById(R.id.etQuantidadePerguntas);
+        ivFiltroRemover10 = findViewById(R.id.ivFiltroRemover10);
+        ivFiltroAdicionar10 = findViewById(R.id.ivFiltroAdicionar10);
+        ivFiltroAdicionar = findViewById(R.id.ivFiltroAdicionar);
+        ivFiltroRemover = findViewById(R.id.ivFiltroRemover);
+        tvFiltroQuantidadePerguntas = findViewById(R.id.tvFiltroQuantidadePerguntas);
+        //etQuantidadePerguntas = findViewById(R.id.etQuantidadePerguntas);
         etQuantidadeConteudos = findViewById(R.id.etQuantidadeConteudos);
         bSalvar = findViewById(R.id.bSalvar);
         rbSelecionar = findViewById(R.id.rbSelecionar);
         rbSortear = findViewById(R.id.rbSortear);
         spMultiConteudos = findViewById(R.id.spMultiConteudos);
 
-
         informacoesApp = (InformacoesApp)getApplicationContext();
-
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -67,7 +70,9 @@ public class QuizFiltroActivity extends AppCompatActivity {
         rbSelecionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                etQuantidadePerguntas.setEnabled(true);
+                tvFiltroQuantidadePerguntas.setEnabled(true);
+                ivFiltroAdicionar.setEnabled(true);
+                ivFiltroRemover.setEnabled(true);
                 etQuantidadeConteudos.setEnabled(false);
                 spMultiConteudos.setEnabled(true);
             }
@@ -76,18 +81,59 @@ public class QuizFiltroActivity extends AppCompatActivity {
         rbSortear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                etQuantidadePerguntas.setEnabled(true);
+                tvFiltroQuantidadePerguntas.setEnabled(true);
+                ivFiltroAdicionar.setEnabled(true);
+                ivFiltroRemover.setEnabled(true);
                 etQuantidadeConteudos.setEnabled(true);
                 spMultiConteudos.setEnabled(false);
+            }
+        });
+
+        //Leandro - botao de diminuir uma pergunta
+        ivFiltroRemover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(quantidadePerguntas>1){
+                    quantidadePerguntas = quantidadePerguntas--;
+                }
+                tvFiltroQuantidadePerguntas.setText(String.valueOf(quantidadePerguntas));
+            }
+        });
+        //Leandro - botao de adicionar uma pergunta
+        ivFiltroAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantidadePerguntas = quantidadePerguntas++;
+                tvFiltroQuantidadePerguntas.setText(String.valueOf(quantidadePerguntas));
+            }
+        });
+        //Leandro - botao de diminuir 10 perguntas
+        ivFiltroRemover10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(quantidadePerguntas>=10){
+                    quantidadePerguntas = quantidadePerguntas-10;
+                }else{
+                    ivFiltroRemover10.setEnabled(false);
+                }
+                tvFiltroQuantidadePerguntas.setText(String.valueOf(quantidadePerguntas));
+            }
+        });
+        //Leandro - botao de adicionar 10 perguntas
+        ivFiltroAdicionar10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantidadePerguntas = quantidadePerguntas+10;
+                tvFiltroQuantidadePerguntas.setText(String.valueOf(quantidadePerguntas));
             }
         });
 
         bSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!etQuantidadePerguntas.getText().toString().equals("")){
+                if(!tvFiltroQuantidadePerguntas.getText().toString().equals("")){
 
-                        quantidadePerguntas = Integer.parseInt(etQuantidadePerguntas.getText().toString());
+                        quantidadePerguntas = Integer.parseInt(tvFiltroQuantidadePerguntas.getText().toString());
 
                         if (rbSelecionar.isChecked()){
                             if (spMultiConteudos.getSelectedSize() > 0) {
@@ -125,8 +171,8 @@ public class QuizFiltroActivity extends AppCompatActivity {
                             }
                         }
                 } else {
-                    etQuantidadePerguntas.setError("Informe a quantidade de perguntas!");
-                    etQuantidadePerguntas.requestFocus();
+                    tvFiltroQuantidadePerguntas.setError("Informe a quantidade de perguntas!");
+                    tvFiltroQuantidadePerguntas.requestFocus();
                 }
             }
         });

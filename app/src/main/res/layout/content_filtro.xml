@@ -19,18 +19,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quantidade perguntas por conteúdo:"/>
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/etQuantidadePerguntas" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="Quantidade perguntas por conteúdo:"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_remove_fast_minus"
+                    android:id="@+id/ivFiltroRemover10"/>
+
+                <ImageView
+                    android:id="@+id/ivFiltroRemover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_minus"/>
+
+                <TextView
+                    android:id="@+id/tvFiltroQuantidadePerguntas"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"/>
+
+                <ImageView
+                    android:id="@+id/ivFiltroAdicionar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_fast_mais"
+                    android:id="@+id/ivFiltroAdicionar10"/>
+
+            </LinearLayout>
 
 
             <TextView
@@ -67,7 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spMultiConteudos"
-                android:spinnerMode="dropdown"></com.example.user.componente.MultiSelectionSpinner>
+                android:spinnerMode="dropdown">
+
+            </com.example.user.componente.MultiSelectionSpinner>
 
 
             <TextView

@@ -33,6 +33,12 @@
             android:text="todos"
             android:id="@+id/rbGraficoNivelConteudoTodos"
             android:layout_margin="5dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nível Específico"
+            android:id="@+id/rbGraficoNivelConteudoEspecifico"
+            android:layout_margin="5dp"/>
     </RadioGroup>
 
     <TextView
@@ -40,7 +46,8 @@
         android:layout_height="wrap_content"
         android:text="Nível do conteúdo"
         android:layout_margin="5dp"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:id="@+id/tvGraficoDesempenhoConteudoNivelConteudo"/>
 
     <RadioGroup
         android:layout_width="wrap_content"

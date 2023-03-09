@@ -36,18 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
-    <!--
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Voltar"
-        android:id="@+id/bVisualizaUpgradeVoltar"
-        android:textColor="#FFFFFF"
-        android:textAllCaps="false"
-        android:textSize="20dp"
-
-        android:background="@drawable/botaoorganica_customizado"/>
--->
     <Space
         android:layout_width="match_parent"
         android:layout_height="6dp"/>
@@ -60,7 +48,7 @@
         android:paddingRight="20dp"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_perguntas2"
-        android:id="@+id/bVisualizaPerguntas"
+        android:id="@+id/bVisualizaPercursoQuiz"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:background="@drawable/botaoorganica_customizado"
@@ -78,7 +66,7 @@
         android:paddingRight="20dp"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_analises"
-        android:id="@+id/bVisualizaHistorico"
+        android:id="@+id/bVisualizaPercursoHistorico"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:background="@drawable/botaoorganica_customizado"

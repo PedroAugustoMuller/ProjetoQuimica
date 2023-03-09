@@ -175,7 +175,7 @@ public class PerguntaDB {
     }
 
     //PARA QUE USARÍAMOS ESSA FUNÇÃO? Basicamente repete a função buscaPerguntasPorConteudo - PEDRO
-    //apenas para teste - depois devera receber o objeto da classe conteudo
+    //apenas para QuizMenuActivity - depois devera receber o objeto da classe conteudo
     public ArrayList<Pergunta> buscaPerguntasPorConteudo(Conteudo meuConteudo, int quantidade) {
         ArrayList<Pergunta> listaPerguntas = new ArrayList<>();
 

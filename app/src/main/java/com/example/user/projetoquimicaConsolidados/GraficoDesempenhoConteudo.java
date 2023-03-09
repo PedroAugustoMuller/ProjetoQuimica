@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.user.banco.DesempenhoConteudoDB;
 import com.example.user.banco.InformacoesApp;
@@ -16,6 +17,7 @@ import com.example.user.banco.NivelConteudoDB;
 import com.example.user.classesDominio.Conteudo;
 import com.example.user.classesDominio.DesempenhoConteudo;
 import com.example.user.componente.NivelConteudoEnum;
+import com.example.user.componente.templates.TemplateDeCores;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -33,8 +35,9 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
     InformacoesApp informacoesApp;
     NivelConteudoEnum nivelConteudoEnum;
     Conteudo conteudo;
+    TextView tvGraficoDesempenhoConteudoNivelConteudo;
     RadioGroup rgSelecionaNivelConteudo, rgGraficoConteudoTodos;
-    RadioButton rbGraficoNivelConteudoCobre, rbGraficoNivelConteudoBronze, rbGraficoNivelConteudoPrata, rbGraficoNivelConteudoOuro, rbGraficoNivelConteudoDiamante, rbGraficoNivelConteudoTodos;
+    RadioButton rbGraficoNivelConteudoCobre, rbGraficoNivelConteudoBronze, rbGraficoNivelConteudoPrata, rbGraficoNivelConteudoOuro, rbGraficoNivelConteudoDiamante, rbGraficoNivelConteudoTodos,rbGraficoNivelConteudoEspecifico;
     DesempenhoConteudoDB desempenhoConteudoDB = new DesempenhoConteudoDB(GraficoDesempenhoConteudo.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +47,13 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         setSupportActionBar(toolbar);
         informacoesApp = (InformacoesApp) getApplicationContext();
 
+        tvGraficoDesempenhoConteudoNivelConteudo = findViewById(R.id.tvGraficoDesempenhoConteudoNivelConteudo);
+
         rgSelecionaNivelConteudo = findViewById(R.id.rgSelecionaNivelConteudo);
         rgGraficoConteudoTodos = findViewById(R.id.rgGraficoConteudoTodos);
 
         rbGraficoNivelConteudoTodos = findViewById(R.id.rbGraficoNivelConteudoTodos);
+        rbGraficoNivelConteudoEspecifico = findViewById(R.id.rbGraficoNivelConteudoEspecifico);
         rbGraficoNivelConteudoCobre = findViewById(R.id.rbGraficoNivelConteudoCobre);
         rbGraficoNivelConteudoBronze = findViewById(R.id.rbGraficoNivelConteudoBronze);
         rbGraficoNivelConteudoPrata = findViewById(R.id.rbGraficoNivelConteudoPrata);
@@ -61,6 +67,25 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         conteudo = (Conteudo)it.getSerializableExtra("conteudo"); //atribuindo ao conteudo
         carregaLineChartSemFiltro2(); //Função para carregar o gráfico assim que a tela se inicia
 
+        //selecionando o radio button todos
+        rbGraficoNivelConteudoTodos.setChecked(true);
+
+        //verificando se o radio button está selecionado para esconder as outras opções de filtro
+        if (rbGraficoNivelConteudoTodos.isChecked()){
+            rgSelecionaNivelConteudo.setVisibility(View.GONE);
+            tvGraficoDesempenhoConteudoNivelConteudo.setVisibility(View.GONE);
+        }
+
+        //verificando se o usuario selecionou o radio button de filtro especifico para habilitar os filtros
+        rbGraficoNivelConteudoEspecifico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rgSelecionaNivelConteudo.setVisibility(View.VISIBLE);
+                tvGraficoDesempenhoConteudoNivelConteudo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //verificando se o filtro que foi selecionado foi o todos para carregar o gráfico sem filtro
         rgGraficoConteudoTodos.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() { //Verificando se o filtro "todos" foi selecionado
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -130,7 +155,8 @@ public class GraficoDesempenhoConteudo extends AppCompatActivity {
         }
         LineDataSet lineDataSet = new LineDataSet(carregaEstruturaLineChartSemFiltro(),conteudo.getNomeConteudo());
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        lineDataSet.setColor(Color.GREEN);
+        lineDataSet.setColor(TemplateDeCores.ColorPrimaryDark);
+        lineDataSet.setValueTextColor(TemplateDeCores.ColorPrimaryDark);
         lineDataSet.setLineWidth(4f);
         lineDataSet.setValueTextSize(15f);
 

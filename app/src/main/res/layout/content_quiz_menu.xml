@@ -1,116 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".QuizMenuActivity"
-    android:orientation="vertical"
     tools:showIn="@layout/activity_quiz_menu">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Menu do Quiz"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="206dp" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvQuizMenuQuiz"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_quiz" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quiz" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvQuizMenuGraficos"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cvQuizMenuQuiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/cvQuizMenuQuiz" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="5dp">
+            android:gravity="center"
+            android:layout_gravity="center">
 
-            <Button
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_graficos"/>
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cadastro conteúdo"
-                android:id="@+id/bCadastroConteudos"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastro pergunta"
-                android:id="@+id/bCadastroPerguntas"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Quiz"
-                android:id="@+id/bQuiz"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Adicionar nivel de conteudo"
-                android:id="@+id/bConteudoNivel"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/bVisualizarlistaNiveisConteudos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Visualizar lista de niveis conteudos"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Diagnóstico"
-                android:id="@+id/bDiagnostico"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gráficos de Desempenho por Conteúdo"
-                android:id="@+id/bGraficoDesempenhoConteudo"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="10Questionários"
-                android:id="@+id/bGraficoDezQuestionarios"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gráfico Niveis Por Conteudo"
-                android:id="@+id/bGraficoNiveisPorConteudo"
-                android:background="@drawable/botaoorganica_customizado"
-                android:textColor="#FFFFFF"
-                android:layout_margin="5dp"
-                android:textStyle="bold"/>
-
+                android:text="Gráficos"/>
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v7.widget.CardView>
 
-</LinearLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvQuizMenuAddpergunta"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="44dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/cvQuizMenuQuiz"
+        app:layout_constraintStart_toStartOf="@+id/cvQuizMenuQuiz"
+        app:layout_constraintTop_toBottomOf="@+id/cvQuizMenuQuiz" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_addpergunta"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adicionar\nPergunta"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvQuizMenuAddconteudo"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/cvQuizMenuGraficos"
+        app:layout_constraintStart_toStartOf="@+id/cvQuizMenuGraficos"
+        app:layout_constraintTop_toTopOf="@+id/cvQuizMenuAddpergunta" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_addconteudo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13.9dp"
+                android:text="Adicionar\nConteúdo"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvQuizMenuAddnivelconteudo"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="44dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/cvQuizMenuAddpergunta"
+        app:layout_constraintStart_toStartOf="@+id/cvQuizMenuAddpergunta"
+        app:layout_constraintTop_toBottomOf="@+id/cvQuizMenuAddpergunta" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_quiz"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Nível Cont"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/cvQuizMenuAddconteudo"
+        app:layout_constraintStart_toStartOf="@+id/cvQuizMenuAddconteudo"
+        app:layout_constraintTop_toTopOf="@+id/cvQuizMenuAddnivelconteudo"
+        android:id="@+id/cvQuizMenuVisualizacaoConteudos">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_menu_quiz_quiz"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visualização\ndos Conteúdos"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

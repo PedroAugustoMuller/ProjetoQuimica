@@ -1,5 +1,6 @@
 package com.example.user.projetoquimicaConsolidados;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,7 @@ public class QuizRelatorioActivity extends AppCompatActivity {
         pcRelatorioResultados = findViewById(R.id.pcRelatorioResultados);
 
         Intent it = getIntent();
+
 
         if (it.hasExtra("listaPerguntas")) {
             listaPerguntas = (ArrayList<Pergunta>) it.getSerializableExtra("listaPerguntas");

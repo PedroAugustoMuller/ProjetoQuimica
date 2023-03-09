@@ -53,18 +53,7 @@ public class GraficoNiveisPorConteudoActivity extends AppCompatActivity {
     }
 
     public void ConfiguraGrafico(){
-//        ArrayList<BarEntry> listaEntradas = new ArrayList<>();
-//        for (int x = 0; x < listaNiveisConteudos.size(); x++){
-//            NivelConteudo meuNivelConteudo = listaNiveisConteudos.get(x);
-//            label[x] = listaNiveisConteudos.get(x).getConteudo().getNomeConteudo();
-//            listaEntradas.add(new BarEntry(x , (float)meuNivelConteudo.getNivel().getValor(), meuNivelConteudo.getImagemNivel(this)));
-//        }
-//
-//        BarDataSet setNiveisPorConteudo = new BarDataSet(listaEntradas, "Níveis por Conteúdo");
-//        setNiveisPorConteudo.setDrawValues(false);
-//        setNiveisPorConteudo.setColors(ColorTemplate.JOYFUL_COLORS);
-//        BarData data = new BarData(setNiveisPorConteudo);
-//        data.setDrawValues(false);
+
         listaNiveisConteudos = nivelConteudoDB.buscaConteudosComNivel(conteudoDB.buscaConteudos(informacoesApp.getTipoConteudo()), informacoesApp.getMeuUsuario());
         label = new String[listaNiveisConteudos.size()];
         for (int x = 0; x < listaNiveisConteudos.size(); x++){
@@ -90,11 +79,9 @@ public class GraficoNiveisPorConteudoActivity extends AppCompatActivity {
         left.setAxisMinimum(0);
         left.setAxisMaximum(5);
         left.setValueFormatter(new IndexAxisValueFormatter(yLabel));
-//        right.setGranularity(1f);
-//        right.setAxisMinimum(0);
-//        right.setAxisMaximum(5);
+
         right.setEnabled(false);
-        //XAxis
+
         xAxis.setGranularity(1f);
         xAxis.setTextSize(15f);
         xAxis.setDrawGridLines(false);

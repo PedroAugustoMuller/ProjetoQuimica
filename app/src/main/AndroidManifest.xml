@@ -14,9 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".VisualizacaoGraficosMenu"
+            android:label="@string/title_activity_visualizacao_graficos_menu"
+            android:parentActivityName=".QuizMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
+        </activity>
+        <activity
+            android:name=".QuizMenuActivity"
+            android:label="@string/title_activity_teste"
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
+        </activity>
+        <activity
             android:name="com.example.user.projetoquimicaTeste.GraficoDesempenhoNivelConteudo"
             android:label="@string/title_activity_grafico_desempenho_nivel_conteudo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VisualizacaoConteudosActivity"
             android:label="@string/title_activity_lista_conteudos"
@@ -33,7 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.VisualizacaoConteudosActivity" />
         </activity>
         <activity
             android:name=".GraficoDezQuestionariosActivity"
@@ -42,7 +60,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.VisualizacaoGraficosMenu" />
         </activity>
         <activity
             android:name=".GraficoNiveisPorConteudoActivity"
@@ -60,7 +78,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimicaConsolidados.QuizRelatorioActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
             android:name=".QuizRelatorioActivity"
@@ -132,15 +150,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
-        </activity>
-        <activity
-            android:name=".QuizMenuActivity"
-            android:label="@string/title_activity_quiz_cadastro"
-            android:parentActivityName=".MainMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
         </activity>
         <activity
             android:name=".CadastroConteudoActivity"
@@ -217,7 +226,7 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.projetoquimicaConsolidados.MainMenuActivity" />
+                android:value="com.example.user.projetoquimicaConsolidados.QuizMenuActivity" />
         </activity>
         <activity
             android:name=".com.example.user.projetoquimicaFuturo.TabelaPeriodicaActivity"

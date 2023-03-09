@@ -9,6 +9,13 @@
     tools:context=".VisualizacaoConteudosActivity"
     tools:showIn="@layout/activity_visualizacao_conteudos">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Selecione um Conteúdo Para Verificar o  seu Desempenho"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvListaConteudos"
         android:layout_width="match_parent"

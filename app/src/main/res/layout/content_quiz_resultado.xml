@@ -50,22 +50,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rvDesempenhoConteudo"
-        tools:listitem="@layout/item_list_row_desempenho">
+        >
     </android.support.v7.widget.RecyclerView>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
     <Button
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:text="Relatório de questões"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:padding="5dp"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_relatorio"
         android:id="@+id/bQuizRelatorio"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:background="@drawable/botaoorganica_customizado"
+        android:textSize="16dp"
+        android:layout_marginBottom="8dp"/>
+    <Button
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:text="Gráfico 10 últimos questionários"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:id="@+id/bQuizGrafico10Questionarios"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:background="@drawable/botaoorganica_customizado"

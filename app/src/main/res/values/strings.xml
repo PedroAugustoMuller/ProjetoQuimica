@@ -72,4 +72,8 @@
     <string name="title_activity_lista_conteudos">ListaConteudosActivity</string>
     <string name="title_activity_grafico_desempenho_nivel_conteudo">GraficoDesempenhoNivelConteudo
     </string>
+    <string name="title_activity_quiz_menu2">QuizMenuActivity2</string>
+    <string name="title_activity_quiz_menu">QuizMenuActivity</string>
+    <string name="title_activity_quiz_menuuu">QuizMenuuu</string>
+    <string name="title_activity_visualizacao_graficos_menu">VisualizacaoGraficosMenu</string>
 </resources>

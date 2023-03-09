@@ -156,7 +156,7 @@ public class CadastroPerguntaActivity extends AppCompatActivity {
                                                 Toast.makeText(CadastroPerguntaActivity.this, "Informe a alternativa correta!", Toast.LENGTH_SHORT).show();
                                             }
                                         }else {
-                                            Toast.makeText(CadastroPerguntaActivity.this, "Informe se a pergunta pertence a teste prévio ou não!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(CadastroPerguntaActivity.this, "Informe se a pergunta pertence a QuizMenuActivity prévio ou não!", Toast.LENGTH_SHORT).show();
                                         }
                                     }else {
                                         Toast.makeText(CadastroPerguntaActivity.this, "Informe o conteúdo o qual a pergunta pertence!", Toast.LENGTH_SHORT).show();

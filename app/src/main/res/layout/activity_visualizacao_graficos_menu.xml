@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizResultadoActivity">
+    tools:context="com.example.user.projetoquimicaConsolidados.VisualizacaoGraficosMenu">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -16,11 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="Resultado Do Quiz"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Menu de Gráficos"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_quiz_resultado" />
+    <include layout="@layout/content_visualizacao_graficos_menu" />
+
 
 </android.support.design.widget.CoordinatorLayout>

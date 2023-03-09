@@ -13,13 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.banco.InformacoesApp;
+import com.example.user.classesDominio.Conteudo;
 import com.example.user.classesDominio.Feedback;
 import com.example.user.classesDominio.NivelConteudo;
 
 public class VisualizaPercursoActivity extends AppCompatActivity {
     TextView tvVisualizaTitulo, tvVisualizaSaudacao;
     ImageView ivVisualizaUpgrade;
-    Button bVisualizaUpgradeVoltar, bVisualizaPerguntas, bVisualizaHistorico;
+    Button bVisualizaPercursoQuiz, bVisualizaPercursoHistorico;
+    Conteudo conteudo;
     Context context;
 
     InformacoesApp informacoesApp;
@@ -32,9 +34,10 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
         tvVisualizaTitulo = findViewById(R.id.tvVisualizaTitulo);
         tvVisualizaSaudacao = findViewById(R.id.tvVisualizaSaudacao);
         ivVisualizaUpgrade = findViewById(R.id.ivVisualizaUpgrade);
-        //bVisualizaUpgradeVoltar = findViewById(R.id.bVisualizaUpgradeVoltar);
-        bVisualizaPerguntas = findViewById(R.id.bVisualizaPerguntas);
-        bVisualizaHistorico = findViewById(R.id.bVisualizaHistorico);
+
+        bVisualizaPercursoQuiz = findViewById(R.id.bVisualizaPercursoQuiz);
+        bVisualizaPercursoHistorico = findViewById(R.id.bVisualizaPercursoHistorico);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent it = getIntent();
 
@@ -44,7 +47,9 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
 
         if(it != null){
             NivelConteudo meuNivel = (NivelConteudo) it.getSerializableExtra("nivel"); //aqui n seria
+            conteudo = meuNivel.getConteudo();//para mandar o conteudo pela intent
             ivVisualizaUpgrade.setImageDrawable(meuNivel.getImagemNivelCaminho(context));
+
             tvVisualizaTitulo.setText(informacoesApp.getMeuUsuario().getNomeUsuario().substring(0,1).toUpperCase() + informacoesApp.getMeuUsuario().getNomeUsuario().substring(1).toLowerCase() + ", confira o seu percurso no conteúdo " + meuNivel.getConteudo().getNomeConteudo() + ":");
 
             if (it.hasExtra("feedback")) { // sinal que está sendo chamado através da tela de desempenho
@@ -53,16 +58,27 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
                     tvVisualizaSaudacao.setText("Parabéns, você avançou de nível!");
                 }
                 // desabilitando os botões
-                bVisualizaPerguntas.setVisibility(View.INVISIBLE);
-                bVisualizaHistorico.setVisibility(View.INVISIBLE);
+                bVisualizaPercursoQuiz.setVisibility(View.INVISIBLE);
+                bVisualizaPercursoHistorico.setVisibility(View.INVISIBLE);
             }
         }
-        /*bVisualizaUpgradeVoltar.setOnClickListener(new View.OnClickListener() {
+
+        bVisualizaPercursoHistorico.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                finish();
+            public void onClick(View v) {
+                Intent it = new Intent(VisualizaPercursoActivity.this, GraficoDesempenhoConteudo.class);
+                it.putExtra("conteudo",conteudo);
+                startActivity(it);
             }
-        });*/
+        });
+
+        bVisualizaPercursoQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(VisualizaPercursoActivity.this, QuizFiltroActivity.class);
+                startActivity(it);
+            }
+        });
     }
 
     @Override

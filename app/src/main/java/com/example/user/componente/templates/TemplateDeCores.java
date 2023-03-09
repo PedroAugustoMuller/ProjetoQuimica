@@ -20,5 +20,4 @@ public class TemplateDeCores {
 
     public static final int ColorPrimaryDark = Color.rgb(0, 154, 134);
 
-
 }

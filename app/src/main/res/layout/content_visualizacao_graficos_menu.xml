@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.user.projetoquimicaConsolidados.VisualizacaoGraficosMenu"
+    tools:showIn="@layout/activity_visualizacao_graficos_menu"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione o Tipo de Gráfico que Deseja Olhar"
+        android:layout_marginBottom="5dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botaoorganica_customizado"
+        android:gravity="center"
+        android:id="@+id/bVisualizacaoGraficosDezQuestionarios"
+        android:text="Gráfico Dez Questionários"
+        android:textColor="@color/corSecundariaTextoClaro"
+        android:layout_margin="15dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botaoorganica_customizado"
+        android:gravity="center"
+        android:id="@+id/bVisualizacaoGraficosDesempenhoConteudo"
+        android:text="Gráfico desempenho do conteúdo"
+        android:textColor="@color/corSecundariaTextoClaro"
+        android:layout_margin="15dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botaoorganica_customizado"
+        android:gravity="center"
+        android:id="@+id/bVisualizacaoGraficosNiveisPorConteudo"
+        android:text="Gráfico níveis por conteúdo"
+        android:textColor="@color/corSecundariaTextoClaro"
+        android:layout_margin="15dp"/>
+</LinearLayout>

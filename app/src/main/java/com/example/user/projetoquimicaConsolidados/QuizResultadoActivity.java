@@ -1,8 +1,10 @@
 package com.example.user.projetoquimicaConsolidados;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,25 +42,27 @@ public class QuizResultadoActivity extends AppCompatActivity {
     ArrayList<Pergunta> listaPerguntas;
     Context context;
     TextView tvDesempenhoData, tvDesempenhoPontuacaoFinal, tvTituloDesempenho;
-    Button bQuizRelatorio;
+    Button bQuizRelatorio,bQuizGrafico10Questionarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_resultado);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         rvDesempenhoConteudo = (RecyclerView) findViewById(R.id.rvDesempenhoConteudo);
         tvTituloDesempenho = findViewById(R.id.tvTituloDesempenho);
         tvDesempenhoData = findViewById(R.id.tvDesempenhoData);
         tvDesempenhoPontuacaoFinal = findViewById(R.id.tvDesempenhoPontuacaoFinal);
         bQuizRelatorio = findViewById(R.id.bQuizRelatorio);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        bQuizGrafico10Questionarios = findViewById(R.id.bQuizGrafico10Questionarios);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         informacoesApp = (InformacoesApp) getApplicationContext();
         Intent it = getIntent();
         context = getApplicationContext();
         if (it != null) {
+
             DesempenhoQuestionario desempenhoQuestionario = (DesempenhoQuestionario) it.getSerializableExtra("desempenho");
             listaDesempenhoConteudos = desempenhoQuestionario.getListaDesempenhoConteudos();
             listaFeedbacks = (ArrayList<Feedback>)it.getSerializableExtra("listaFeedback");
@@ -72,7 +76,7 @@ public class QuizResultadoActivity extends AppCompatActivity {
             String dataFormatada = dateFormat.format(data);
             tvDesempenhoData.setText(dataFormatada);
 
-            // apenas para teste
+            // apenas para QuizMenuActivity
             String[] desempenho = new String[desempenhoQuestionario.getListaDesempenhoConteudos().size()];
 
             for (int x = 0; x < desempenhoQuestionario.getListaDesempenhoConteudos().size(); x++) {
@@ -82,14 +86,6 @@ public class QuizResultadoActivity extends AppCompatActivity {
                         + ", Acertos: " + desempenhoConteudo.getQuantidadeAcertos()
                         + ", Erros: " + desempenhoConteudo.getQuantidadeErros()
                         + ", Pontuação: " + desempenhoConteudo.getPontuacaoConteudo(), Toast.LENGTH_LONG).show();
-                /*
-                if (desempenhoConteudo.getPontuacaoConteudo() >= 65) {
-                    //os parâmetros para criar o objeto
-                    NivelConteudo meuNivel = listaNivelConteudo.get(x);
-                    Intent i = new Intent(QuizResultadoActivity.this, VisualizaPercursoActivity.class);
-                    i.putExtra("nivel", meuNivel);
-                    startActivity(i);
-                }*/
             }
 
             adapter = new DesempenhoFeedbackAdapter(listaDesempenhoConteudos, listaNivelConteudo, listaFeedbacks, trataCliqueItem, context); //NivelConteudoOnClickListener
@@ -103,6 +99,14 @@ public class QuizResultadoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent it = new Intent(QuizResultadoActivity.this, QuizRelatorioActivity.class );
                 it.putExtra("listaPerguntas", listaPerguntas);
+                startActivityForResult(it,123);
+            }
+        });
+
+        bQuizGrafico10Questionarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(QuizResultadoActivity.this, GraficoDezQuestionariosActivity.class);
                 startActivity(it);
             }
         });
@@ -142,6 +146,5 @@ public class QuizResultadoActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

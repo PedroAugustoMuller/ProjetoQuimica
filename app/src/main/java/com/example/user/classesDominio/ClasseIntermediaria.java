@@ -9,6 +9,7 @@ import com.example.user.banco.NivelConteudoDB;
 import com.example.user.banco.PerguntaDB;
 import com.example.user.componente.NivelConteudoEnum;
 
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -76,13 +77,13 @@ public class ClasseIntermediaria {
         // criando o objeto desempenho questionario para adicionar os desempenhos por conteudo
         // testar se o metodo "System...." volta uma data ou data com hora
         Date dataAtual = new Date(System.currentTimeMillis());
-        Log.d("Teste", "data = " + dataAtual);
+
         DesempenhoQuestionario desempenhoQuestionario = new DesempenhoQuestionario
                 (dataAtual, 1); //recebe 1 no tipo desempenho pois é um quiz
 
         int inicio = 0;
 
-        // navegando na lista de conteúdos para saber as quantidades e também os níveis de cada um
+        // navegando na lista de conteúdos para saber as quantidades de conteúdos e também o nível de cada um
         for (int indice = 0; indice < listaNivelConteudos.size(); indice++) {
             // obtendo o nivel conteudo
             NivelConteudo meuNivelConteudo = listaNivelConteudos.get(indice);
@@ -99,28 +100,41 @@ public class ClasseIntermediaria {
            } else if (quantidadePerguntasPorConteudo[indice][3] == 0){
                quantidadePerguntasPorConteudo[indice][3] = 1;
            }
-            /*float percentualAuxiliar;*/
+
             if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
-//                float percentualFaceis = (quantidadePerguntasPorConteudo[indice][1] / quantidadePerguntasPorConteudo[indice][0])*100;
-                valorFaceis = 68f / quantidadePerguntasPorConteudo[indice][1];
+
+                //valorFaceis = 68f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 32f / quantidadePerguntasPorConteudo[indice][2];
+                valorFaceis = 100 - valorMedias;
+                //Math.round(valorFaceis);
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.BRONZE) {
                 //CADA QUESTÃO DIFÍCIL VALIA 20 PONTOS ANTES
-                valorFaceis = 45f / quantidadePerguntasPorConteudo[indice][1];
+
+                //valorFaceis = 45f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 35f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 20f / quantidadePerguntasPorConteudo[indice][3];
+                //Leandro - calculando o valor das fáceis por último por causa que valem mais, assim melhorando o desempenho do cálculo e evitando erros
+                valorFaceis = 100 - valorMedias - valorDificeis;
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.PRATA) {
+
                 valorFaceis = 30f / quantidadePerguntasPorConteudo[indice][1];
-                valorMedias = 40f / quantidadePerguntasPorConteudo[indice][2];
+                //valorMedias = 40f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 30f / quantidadePerguntasPorConteudo[indice][3];
+                valorMedias = 100 - valorFaceis - valorDificeis;
+
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.OURO) {
                 //CADA QUESTÂO FÁCIL VALIA 20 PONTOS ANTES
+
                 valorFaceis = 5f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 45f / quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 50f / quantidadePerguntasPorConteudo[indice][3];
+                //valorDificeis = 50f / quantidadePerguntasPorConteudo[indice][3];
+                valorDificeis = 100 - valorFaceis - valorMedias;
+
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.DIAMANTE) {
+
                 valorMedias =  30f  / quantidadePerguntasPorConteudo[indice][2];
-                valorDificeis = 70f / quantidadePerguntasPorConteudo[indice][3];
+                //valorDificeis = 70f / quantidadePerguntasPorConteudo[indice][3];
+                valorDificeis = 100 - valorMedias;
             }
             Log.d("Teste", "Percentual valor fáceis: " + valorFaceis + ", percentual médias: " + valorMedias + ", percentual díficeis: " + valorDificeis);
             float pontuacaoConteudo = 0; //PEDRO - Talvez mudar para double

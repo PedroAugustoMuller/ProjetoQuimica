@@ -74,8 +74,6 @@ public class ClasseIntermediaria {
         ArrayList<NivelConteudo> listaNivelConteudoParaAtualizar = new ArrayList<>();
         ArrayList<NivelConteudo> listaNivelConteudoParaDecair = new ArrayList<>();
 
-        // criando o objeto desempenho questionario para adicionar os desempenhos por conteudo
-        // testar se o metodo "System...." volta uma data ou data com hora
         Date dataAtual = new Date(System.currentTimeMillis());
 
         DesempenhoQuestionario desempenhoQuestionario = new DesempenhoQuestionario
@@ -83,12 +81,9 @@ public class ClasseIntermediaria {
 
         int inicio = 0;
 
-        // navegando na lista de conteúdos para saber as quantidades de conteúdos e também o nível de cada um
         for (int indice = 0; indice < listaNivelConteudos.size(); indice++) {
-            // obtendo o nivel conteudo
             NivelConteudo meuNivelConteudo = listaNivelConteudos.get(indice);
 
-            // definindo os valores de faceis, medias e dificeis de acordo com o nível que o usuário está
             float valorFaceis = 0;
             float valorMedias = 0;
             float valorDificeis = 0;
@@ -103,45 +98,49 @@ public class ClasseIntermediaria {
 
             if (meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE) {
 
-                //valorFaceis = 68f / quantidadePerguntasPorConteudo[indice][1];
+                valorFaceis = 68f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 32f / quantidadePerguntasPorConteudo[indice][2];
-                valorFaceis = 100 - valorMedias;
-                //Math.round(valorFaceis);
+
+                //valorMedias = ((100 - valorFaceis*quantidadePerguntasPorConteudo[indice][1])/quantidadePerguntasPorConteudo[indice][2]);
+                //Toast.makeText(context, "FACEIS - CADA:"+valorFaceis+", TOTAL: "+valorFaceis*quantidadePerguntasPorConteudo[indice][1], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "medias - CADA:"+valorMedias+", TOTAL: "+valorFaceis*quantidadePerguntasPorConteudo[indice][1], Toast.LENGTH_SHORT).show();
+                Log.d("TESTE","FACEIS - CADA:"+valorFaceis+", TOTAL: "+valorFaceis*quantidadePerguntasPorConteudo[indice][1]);
+                Log.d("teste2","medias - CADA:"+valorMedias+", TOTAL: "+valorMedias*quantidadePerguntasPorConteudo[indice][2]);
+                //valorFaceis = (100-valorMedias);
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.BRONZE) {
                 //CADA QUESTÃO DIFÍCIL VALIA 20 PONTOS ANTES
 
-                //valorFaceis = 45f / quantidadePerguntasPorConteudo[indice][1];
+                valorFaceis = 45f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 35f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 20f / quantidadePerguntasPorConteudo[indice][3];
                 //Leandro - calculando o valor das fáceis por último por causa que valem mais, assim melhorando o desempenho do cálculo e evitando erros
-                valorFaceis = 100 - valorMedias - valorDificeis;
+                //valorFaceis = 100 - valorMedias - valorDificeis;
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.PRATA) {
 
                 valorFaceis = 30f / quantidadePerguntasPorConteudo[indice][1];
-                //valorMedias = 40f / quantidadePerguntasPorConteudo[indice][2];
+                valorMedias = 40f / quantidadePerguntasPorConteudo[indice][2];
                 valorDificeis = 30f / quantidadePerguntasPorConteudo[indice][3];
-                valorMedias = 100 - valorFaceis - valorDificeis;
+                //valorMedias = 100 - valorFaceis - valorDificeis;
 
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.OURO) {
                 //CADA QUESTÂO FÁCIL VALIA 20 PONTOS ANTES
 
                 valorFaceis = 5f / quantidadePerguntasPorConteudo[indice][1];
                 valorMedias = 45f / quantidadePerguntasPorConteudo[indice][2];
-                //valorDificeis = 50f / quantidadePerguntasPorConteudo[indice][3];
-                valorDificeis = 100 - valorFaceis - valorMedias;
+                valorDificeis = 50f / quantidadePerguntasPorConteudo[indice][3];
+                //valorDificeis = 100 - valorFaceis - valorMedias;
 
             } else if (meuNivelConteudo.getNivel() == NivelConteudoEnum.DIAMANTE) {
 
                 valorMedias =  30f  / quantidadePerguntasPorConteudo[indice][2];
-                //valorDificeis = 70f / quantidadePerguntasPorConteudo[indice][3];
-                valorDificeis = 100 - valorMedias;
+                valorDificeis = 70f / quantidadePerguntasPorConteudo[indice][3];
+                //valorDificeis = 100 - valorMedias;
             }
             Log.d("Teste", "Percentual valor fáceis: " + valorFaceis + ", percentual médias: " + valorMedias + ", percentual díficeis: " + valorDificeis);
             float pontuacaoConteudo = 0; //PEDRO - Talvez mudar para double
 
-            // fazendo o controle para saber até onde ele deve ir nas perguntas para esse determinado conteúdo
             int fim = inicio + quantidadePerguntasPorConteudo[indice][0];
-            // navegando nas perguntas do conteúdo em questão
+
             for (int x = inicio; x < fim; x++) {
                 // obtendo a pergunta do conteúdo
                 Pergunta minhaPergunta = listaPerguntas.get(x);
@@ -163,46 +162,13 @@ public class ClasseIntermediaria {
                     erros++;
                 }
 
-                /*TESTE*/
-                /*if(meuConteudo.getQuantidade() == 0){
-                    meuConteudo.setQuantidade(1);
-                } else if(meuConteudo.getQuantidade() <= 5){
-                    int quantidade = 1;
-                    meuConteudo.calculaPrecisao(meuConteudo, pontuacaoConteudo);
-                    quantidade++;
-                    meuConteudo.setQuantidade(quantidade);
-                } else if(meuConteudo.getQuantidade() > 5){
-                    if(meuConteudo.getPorcentagemNivel() >=0 || meuConteudo.getPorcentagemNivel() <=100){
-                        float soma = meuConteudo.getPrecisao();
-                        if(pontuacaoConteudo < 65){
-                            soma = - soma;
-                        }
-                        if((meuConteudo.getPorcentagemNivel() + soma) >= 0 && (meuConteudo.getPorcentagemNivel() + soma) < 100){
-                            meuConteudo.setPorcentagemNivel((int) (meuConteudo.getPorcentagemNivel() + soma));
-                        } else if((meuConteudo.getPorcentagemNivel() + soma) > 100){
-                            float somaFinal = soma - meuConteudo.getPorcentagemNivel();
-                            // passou para o proximo nivel com essa soma final de pontos no proximo nivel
-                        } else if ((meuConteudo.getPorcentagemNivel() + soma) < 0){
-                            if(meuConteudo.getCaiuNivel() == 0){
-                                meuConteudo.setCaiuNivel(1);
-                                meuConteudo.setPorcentagemNivel(0);
-                            } else {
-                                if(meuNivelConteudo.getNivel() == NivelConteudoEnum.COBRE){
-                                    // fica no cobre com 0 pontos
-                                } else {
-                                    float somaFinal = 100 + soma;
-                                    // caiu nivel e ficou com essa soma final de pontos no nivel anterior
-                                }
-                            }
-                        }
-                    }
-                }*/
             }
 
             Log.d("Teste", "Pontuação conteúdo: " + pontuacaoConteudo);
             // atualizando o novo início
             inicio = fim;
-
+            //arredondando para evitar o erro das notas ex: 99,999999
+            pontuacaoConteudo = Math.round(pontuacaoConteudo);
             DesempenhoConteudo desempenhoConteudo = new DesempenhoConteudo(meuNivelConteudo.getConteudo(), quantidadePerguntasPorConteudo[indice][0], acertos, erros, pontuacaoConteudo, meuNivelConteudo.getNivel());
 
             // adicionando no desempenho do questionário
@@ -211,8 +177,6 @@ public class ClasseIntermediaria {
             // reiniciando os acertos e erros
             acertos = 0;
             erros = 0;
-
-            // verificando se pontuação conteúdo fez com que devesse pular de nível
             Log.d("Teste", "Nível antigo: " + meuNivelConteudo.getNivel());
             //montar o feedback (parecido com o caso de desempenho entre 40 e 70 do diagnostico)
             if (pontuacaoConteudo >= 65) {
@@ -293,7 +257,7 @@ public class ClasseIntermediaria {
                 listaFeedbacks.add(meuFeedback);
 
             }
-            //PEDRO - Atualizando o número de tentativas no banco
+
             nivelConteudoDB.atualizaTentativas(meuNivelConteudo, meuUsuario);
             //PEDRO - Atualizando o número de vidas no banco
             nivelConteudoDB.atualizaVidas(meuNivelConteudo, meuUsuario);
@@ -302,7 +266,6 @@ public class ClasseIntermediaria {
 
         }
 
-        // verificando se existem conteúdos a serem atualizados os níveis no banco
         if (listaNivelConteudoParaAtualizar.size() > 0) {
             NivelConteudoDB nivelConteudoDB = new NivelConteudoDB(this.context);
             nivelConteudoDB.incrementaNivel(listaNivelConteudoParaAtualizar, meuUsuario);

@@ -51,6 +51,9 @@ public class DesempenhoFeedbackAdapter extends RecyclerView.Adapter<DesempenhoFe
         holder.imImagemNivel.setImageDrawable(meuNivelConteudo.getImagemNivel(this.context));
 
         //Verificar a quantidade de níveis pulados do feedback
+        int quantidadeVidas = meuNivelConteudo.getVidas();
+        //holder.imVidaConteudo.setImageDrawable();
+        holder.tvQuantidadeVidas.setText(""+quantidadeVidas);
         if (meuFeedback.getNiveisAvancados() > 0) {
             holder.imImagemNivel.setImageDrawable(meuNivelConteudo.getImagemNivelParametro(meuFeedback.getNivelAnterior(), this.context)); // mostrar o anterior para indicar que atualizou! Esse comportamento?
             holder.imImagemUpgrade.setImageDrawable(meuNivelConteudo.getImagemUpgrade(this.context));
@@ -78,14 +81,16 @@ public class DesempenhoFeedbackAdapter extends RecyclerView.Adapter<DesempenhoFe
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView imImagemNivel, imImagemUpgrade;
-        TextView tvNomeConteudo, tvPontuacaoConteudo;
+        ImageView imImagemNivel, imImagemUpgrade, imVidaConteudo;
+        TextView tvNomeConteudo, tvPontuacaoConteudo, tvQuantidadeVidas;
         public MyViewHolder(View itemView) {
             super(itemView);
             tvNomeConteudo = (TextView) itemView.findViewById(R.id.tvNomeConteudo);
             tvPontuacaoConteudo = (TextView) itemView.findViewById(R.id.tvPontuacaoConteudo);
             imImagemNivel = (ImageView) itemView.findViewById(R.id.imImagemNivel);
             imImagemUpgrade = (ImageView) itemView.findViewById(R.id.imUpgradeNivel);
+            imVidaConteudo = itemView.findViewById(R.id.imVidaConteudo);
+            tvQuantidadeVidas = itemView.findViewById(R.id.tvQuantidadeVidas);
         }
     }
 

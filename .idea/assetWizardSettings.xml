@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Users/Leandro/Desktop/Nova%20pasta/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_playlist_add_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Users/Leandro/Desktop/Nova%20pasta/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_public_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,7 +34,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="00ccb6" />
-                            <entry key="outputName" value="ic_menu_quiz_addconteudo" />
+                            <entry key="outputName" value="teste" />
                             <entry key="sourceFile" value="C:\Users\Leandro" />
                           </map>
                         </option>

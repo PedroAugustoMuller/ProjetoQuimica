@@ -155,7 +155,7 @@ public class QuizActivity extends AppCompatActivity {
 
                     // chamada da classe intermediária
                     if (tipo == 1) { //quiz
-                        desempenhoQuestionario = classeIntermediaria.calculaDesempenhoQuestionario(listaNivelConteudos, quantidadePerguntasPorConteudo, listaPerguntas, informacoesApp.getMeuUsuario(), listaFeedbacks);
+                        desempenhoQuestionario = classeIntermediaria.calculaDesempenhoQuestionario(listaNivelConteudos, quantidadePerguntasPorConteudo, listaPerguntas, informacoesApp.getMeuUsuario(), listaFeedbacks, null, null);
                         /*Intent it = new Intent(QuizActivity.this, QuizResultadoActivity.class);
                         it.putExtra("listaNivelConteudos", listaNivelConteudos);
                         it.putExtra("listaFeedbacks", listaFeedbacks);

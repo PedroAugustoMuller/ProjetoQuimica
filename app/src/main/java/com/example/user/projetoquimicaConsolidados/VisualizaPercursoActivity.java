@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.banco.InformacoesApp;
@@ -23,6 +24,7 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
     Button bVisualizaPercursoQuiz, bVisualizaPercursoHistorico;
     Conteudo conteudo;
     Context context;
+    RatingBar rtbVisualizaPercursoVidas;
 
     InformacoesApp informacoesApp;
     @Override
@@ -38,6 +40,7 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
         bVisualizaPercursoQuiz = findViewById(R.id.bVisualizaPercursoQuiz);
         bVisualizaPercursoHistorico = findViewById(R.id.bVisualizaPercursoHistorico);
 
+        rtbVisualizaPercursoVidas = findViewById(R.id.rtbVisualizaPercursoVidas);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent it = getIntent();
 
@@ -45,11 +48,15 @@ public class VisualizaPercursoActivity extends AppCompatActivity {
 
         informacoesApp = (InformacoesApp)getApplicationContext();
 
+
+
         if(it != null){
             NivelConteudo meuNivel = (NivelConteudo) it.getSerializableExtra("nivel"); //aqui n seria
             conteudo = meuNivel.getConteudo();//para mandar o conteudo pela intent
             ivVisualizaUpgrade.setImageDrawable(meuNivel.getImagemNivelCaminho(context));
-
+            rtbVisualizaPercursoVidas.setRating(meuNivel.getVidas());
+            //rtbVisualizaPercursoVidas.setEnabled(false);
+            rtbVisualizaPercursoVidas.setIsIndicator(true);
             tvVisualizaTitulo.setText(informacoesApp.getMeuUsuario().getNomeUsuario().substring(0,1).toUpperCase() + informacoesApp.getMeuUsuario().getNomeUsuario().substring(1).toLowerCase() + ", confira o seu percurso no conteúdo " + meuNivel.getConteudo().getNomeConteudo() + ":");
 
             if (it.hasExtra("feedback")) { // sinal que está sendo chamado através da tela de desempenho

@@ -164,6 +164,7 @@ public class NivelConteudoDB {
             where = Conexao.getIdNivelConteudo() + "=" + meuNivelConteudo.getIdNivelConteudo();
             Log.d("Teste", "Entrei no if de incrementaNivel em NivelConteudoDB!");
             valores.put(Conexao.getNIVEL(), meuNivelConteudo.getNivel().getValor());
+            //autalizar vidas e tentativas
             //update em NivelConteudo
             long retorno = this.bancoDados.update(Conexao.getTabelaNivelConteudo(), valores, where, null);
         } else {
@@ -183,7 +184,71 @@ public class NivelConteudoDB {
 
         this.bancoDados.close();
     }
+    public void atualizaTentativas(NivelConteudo meuNivelConteudo, Usuario meuUsuario){
+        ContentValues valores = new ContentValues();
+        String where;
+        this.bancoDados = this.conexao.getWritableDatabase();
 
+        if (meuNivelConteudo.getIdNivelConteudo() != -1){
+            where = Conexao.getIdNivelConteudo() + " = " + meuNivelConteudo.getIdNivelConteudo();
+            Log.d("Teste", "Entrei no if de atualizaTentativas em NivelConteudoDB!");
+            valores.put(Conexao.getTENTATIVAS(), meuNivelConteudo.getTentativas());
+            //update em NivelConteudoDB
+            long retorno = this.bancoDados.update(Conexao.getTabelaNivelConteudo(), valores, where, null);
+            if (retorno == -1){
+                Log.d("Teste", "Erro ao atualizar TENTATIVAS no banco");
+            } else {
+                Log.d("Teste", "TENTATIVAS atualizadas com sucesso");
+            }
+        } else {
+            Log.d("Teste", "Entrei no else de incrementaNivel em NivelConteudoDB!");
+            valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
+            valores.put(Conexao.getTENTATIVAS(), meuNivelConteudo.getTentativas());
+            valores.put(Conexao.getFkUsuarioNivel(), meuUsuario.getIdUsuario());
+            //insert em NivelConteudo, não update
+            long retorno = this.bancoDados.insert(Conexao.getTabelaNivelConteudo(), null, valores);
+            if (retorno >= 0) {
+                int aux = (int) retorno;
+                meuNivelConteudo.setIdNivelConteudo(aux);
+            }
+            Log.d("Teste", "Inseri no banco!" + valores.toString());
+            Log.d("Teste", "Tentativa no banco: " + retorno);
+        }
+        this.bancoDados.close();
+    }
+
+    public void atualizaVidas(NivelConteudo meuNivelConteudo, Usuario meuUsuario){
+        ContentValues valores = new ContentValues();
+        String where;
+        this.bancoDados = this.conexao.getWritableDatabase();
+        if (meuNivelConteudo.getIdNivelConteudo() != -1){
+            where = Conexao.getIdNivelConteudo()+"="+meuNivelConteudo.getIdNivelConteudo()+" AND "+Conexao.getFkUsuarioNivel()+"="+meuUsuario.getIdUsuario();
+            Log.d("Teste","Entrei no IF de atualizaVidas  em NivelConteudoDB!");
+            valores.put(Conexao.getVIDAS(),meuNivelConteudo.getVidas());
+            //Update em NivelConteudoDB
+            long retorno = bancoDados.update(Conexao.getTabelaNivelConteudo(), valores, where, null);
+            if (retorno == -1){
+                Log.d("Teste","Erro ao atulziar as vidas em atualizaVidas NivelConteudoDB");
+            } else {
+                Log.d("Teste","Vidas atualizadas com sucesso em atualizaVidas NivelConteudoDB");
+            }
+            Log.d("Teste", "Inseri no banco!" + valores.toString());
+            Log.d("VIDAS", "Vidas no banco: " + retorno);
+        } else {
+            valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
+            valores.put(Conexao.getVIDAS(), meuNivelConteudo.getVidas());
+            valores.put(Conexao.getFkUsuarioNivel(), meuUsuario.getIdUsuario());
+            //insert em NivelConteudo, não update
+            long retorno = this.bancoDados.insert(Conexao.getTabelaNivelConteudo(), null, valores);
+            if (retorno >= 0) {
+                int aux = (int) retorno;
+                meuNivelConteudo.setIdNivelConteudo(aux);
+            }
+            Log.d("Teste", "Inseri no banco!" + valores.toString());
+            //Log.d("VIDAS", "Vidas no banco: " + retorno);
+        }
+    }
+    //atualizavidastentativas
     public void incrementaNivel(ArrayList<NivelConteudo> listaNiveisConteudos, Usuario meuUsuario) {
         Log.d("Teste", "Entrei no incrementaNivel em NivelConteudoDB!");
         for (int x = 0; x < listaNiveisConteudos.size(); x++) {
@@ -307,69 +372,7 @@ public class NivelConteudoDB {
         return retorno;
     }
 
-    public void atualizaTentativas(NivelConteudo meuNivelConteudo, Usuario meuUsuario){
-        ContentValues valores = new ContentValues();
-        String where;
-        this.bancoDados = this.conexao.getWritableDatabase();
 
-        if (meuNivelConteudo.getIdNivelConteudo() != -1){
-            where = Conexao.getIdNivelConteudo() + " = " + meuNivelConteudo.getIdNivelConteudo();
-            Log.d("Teste", "Entrei no if de atualizaTentativas em NivelConteudoDB!");
-            valores.put(Conexao.getTENTATIVAS(), meuNivelConteudo.getTentativas());
-            //update em NivelConteudoDB
-            long retorno = this.bancoDados.update(Conexao.getTabelaNivelConteudo(), valores, where, null);
-            if (retorno == -1){
-                Log.d("Teste", "Erro ao atualizar TENTATIVAS no banco");
-            } else {
-                Log.d("Teste", "TENTATIVAS atualizadas com sucesso");
-            }
-        } else {
-            Log.d("Teste", "Entrei no else de incrementaNivel em NivelConteudoDB!");
-            valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
-            valores.put(Conexao.getTENTATIVAS(), meuNivelConteudo.getTentativas());
-            valores.put(Conexao.getFkUsuarioNivel(), meuUsuario.getIdUsuario());
-            //insert em NivelConteudo, não update
-            long retorno = this.bancoDados.insert(Conexao.getTabelaNivelConteudo(), null, valores);
-            if (retorno >= 0) {
-                int aux = (int) retorno;
-                meuNivelConteudo.setIdNivelConteudo(aux);
-            }
-            Log.d("Teste", "Inseri no banco!" + valores.toString());
-            Log.d("Teste", "Tentativa no banco: " + retorno);
-        }
-        this.bancoDados.close();
-    }
-
-    public void atualizaVidas(NivelConteudo meuNivelConteudo, Usuario meuUsuario){
-        ContentValues valores = new ContentValues();
-        String where;
-        this.bancoDados = this.conexao.getWritableDatabase();
-        if (meuNivelConteudo.getIdNivelConteudo() != -1){
-            where = Conexao.getIdNivelConteudo()+"="+meuNivelConteudo.getIdNivelConteudo()+" AND "+Conexao.getFkUsuarioNivel()+"="+meuUsuario.getIdUsuario();
-            Log.d("Teste","Entrei no IF de atualizaVidas  em NivelConteudoDB!");
-            valores.put(Conexao.getVIDAS(),meuNivelConteudo.getVidas());
-            //Update em NivelConteudoDB
-            long retorno = bancoDados.update(Conexao.getTabelaNivelConteudo(), valores, where, null);
-            if (retorno == -1){
-                Log.d("Teste","Erro ao atulziar as vidas em atualizaVidas NivelConteudoDB");
-            } else {
-                Log.d("Teste","Vidas atualizadas com sucesso em atualizaVidas NivelConteudoDB");
-            }
-        } else {
-            Log.d("Teste", "Entrei no else de incrementaNivel em NivelConteudoDB!");
-            valores.put(Conexao.getFkConteudoNivel(), meuNivelConteudo.getConteudo().getIdConteudo());
-            valores.put(Conexao.getVIDAS(), meuNivelConteudo.getVidas());
-            valores.put(Conexao.getFkUsuarioNivel(), meuUsuario.getIdUsuario());
-            //insert em NivelConteudo, não update
-            long retorno = this.bancoDados.insert(Conexao.getTabelaNivelConteudo(), null, valores);
-            if (retorno >= 0) {
-                int aux = (int) retorno;
-                meuNivelConteudo.setIdNivelConteudo(aux);
-            }
-            Log.d("Teste", "Inseri no banco!" + valores.toString());
-            Log.d("Teste", "Vidas no banco: " + retorno);
-        }
-    }
 
 
     //APAGAR ISSO OU TORNAR FUNCIONAL - PEDRO

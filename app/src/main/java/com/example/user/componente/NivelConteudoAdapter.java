@@ -47,6 +47,7 @@ public class NivelConteudoAdapter extends RecyclerView.Adapter<NivelConteudoAdap
                 @Override
                 public void onClick(View v) {
                     nivelConteudoOnClickListener.onClickNivelConteudo(holder.itemView,position);
+
                 }
             });
         }
@@ -71,6 +72,9 @@ public class NivelConteudoAdapter extends RecyclerView.Adapter<NivelConteudoAdap
     }
 
     public interface NivelConteudoOnClickListener {
+        public void onClickNivelConteudo(View view, int position);
+    }
+    public interface OnClickNotificacao {
         public void onClickNivelConteudo(View view, int position);
     }
 }

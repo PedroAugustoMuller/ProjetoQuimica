@@ -67,7 +67,7 @@ public class ClasseIntermediaria {
         }
     }*/
 
-    public DesempenhoQuestionario calculaDesempenhoQuestionario(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks) {
+    public DesempenhoQuestionario calculaDesempenhoQuestionario(ArrayList<NivelConteudo> listaNivelConteudos, int[][] quantidadePerguntasPorConteudo, ArrayList<Pergunta> listaPerguntas, Usuario meuUsuario, ArrayList<Feedback> listaFeedbacks, ArrayList<Integer> listaVidas, ArrayList<Integer> listaTentativas) {//listavidas
         int acertos = 0;
         int erros = 0;
         nivelConteudoDB = new NivelConteudoDB(context);
@@ -180,6 +180,13 @@ public class ClasseIntermediaria {
             Log.d("Teste", "Nível antigo: " + meuNivelConteudo.getNivel());
             //montar o feedback (parecido com o caso de desempenho entre 40 e 70 do diagnostico)
             if (pontuacaoConteudo >= 65) {
+                if(desempenhoConteudo.getQuantidadeErros()<2){
+                    if (meuNivelConteudo.getVidas()<5){
+                        meuNivelConteudo.setVidas(meuNivelConteudo.getVidas()+1);// se o usuario errar no máximo 1 questão ele ganha uma vida extra pelo desempenho
+                        Toast.makeText(context, "Você ganhou 1 vida extra devido ao seu desempenho, Parabéns", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
                 if (meuNivelConteudo.getTentativas() >= 2){ //PEDRO - Apto a passar de nível
                     Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel());
                     NivelConteudoEnum novoNivel = meuNivelConteudo.obtemIncrementoUmNivel();
@@ -214,13 +221,13 @@ public class ClasseIntermediaria {
             } else if (pontuacaoConteudo <65){ //Pedro - TRATAMENTO PARA NOTA ABAIXO DA MÉDIA
                 if (meuNivelConteudo.getVidas() > 1){ //Pedro - Ainda não zerou todas as vidas então não decai de nível
                     if (pontuacaoConteudo<=10){ //PEDRO - Número de vidas é decrementado em dois por conta do desempenho menor ou igual a 10
-                        meuNivelConteudo.setVidas(meuNivelConteudo.getVidas()-2);
+                        meuNivelConteudo.setVidas(meuNivelConteudo.getVidas()-2); //se for muito mal perde 2 vidas
                         System.out.println("Vidas: "+meuNivelConteudo.getVidas());
                         Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                         listaFeedbacks.add(meuFeedback);
                         Toast.makeText(context, "Sua nota foi abaixo ou igual a 10, você perdeu duas vidas, você tem mais "+(meuNivelConteudo.getVidas())+" vidas", Toast.LENGTH_SHORT).show();
                     } else{ //Pedro - Número de vidas é decrementado em 1
-                        meuNivelConteudo.setVidas(meuNivelConteudo.getVidas()-1);
+                        meuNivelConteudo.setVidas(meuNivelConteudo.getVidas()-1);// se nao for tão mal perde apenas 1 vida
                         System.out.println("Vidas: "+meuNivelConteudo.getVidas());
                         Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                         listaFeedbacks.add(meuFeedback);
@@ -228,8 +235,8 @@ public class ClasseIntermediaria {
                     }
 
                 } else { //PEDRO - Decai um nível direto pois já zerou ou irá zerar o número de vidas
-                    meuNivelConteudo.setTentativas(0); //PEDRO - Zera as tentativas pois desceu de nível
-                    meuNivelConteudo.setVidas(5); //PEDRO - Restaura o número base vidas (4) pois desceu de nível
+                    meuNivelConteudo.setTentativas(0); // Zera as tentativas pois desceu de nível
+                    meuNivelConteudo.setVidas(5); // Restaura o número base vidas (4) pois desceu de nível
 
                     Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel());
                     NivelConteudoEnum novoNivel = meuNivelConteudo.obtemDecaiUmNivel();
@@ -255,7 +262,6 @@ public class ClasseIntermediaria {
             else { // precisa indicar no FeedBack que não teve avanço
                 Feedback meuFeedback = new Feedback(meuNivelConteudo.getConteudo(), meuNivelConteudo.getNivel(), meuNivelConteudo.getNivel(), 0);
                 listaFeedbacks.add(meuFeedback);
-
             }
 
             nivelConteudoDB.atualizaTentativas(meuNivelConteudo, meuUsuario);
